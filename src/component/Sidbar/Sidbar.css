@@ -1,0 +1,28 @@
+.sidebar {
+    @apply
+    /* sm */
+    bg-slate-900 w-64 h-screen text-sky-100
+    /* md */
+}
+
+.sidebar .logo {
+    @apply
+    /* sm */
+    w-full h-16 bg-red-500 flex justify-center items-center
+    /* md */
+}
+
+/* .sidebar .sidebar-items {
+    @apply 
+} */
+
+.sidebar .sidebar-items li {
+    @apply w-full
+}
+
+.sidebar .sidebar-items li span{
+    @apply ml-3 h-12
+}
+
+ /* sm */
+    /* md */
