@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Fifth_Project/static/css/main.d4f4a294.css",
+    "main.js": "/Fifth_Project/static/js/main.73e601c7.js",
+    "static/media/icon _search.svg": "/Fifth_Project/static/media/icon _search.9c97a283a91080f5a4797fa0c85abc9c.svg",
+    "static/media/icon _cog.svg": "/Fifth_Project/static/media/icon _cog.36798c7a60999c4195ccf294d15e01ac.svg",
+    "static/media/icon _trash.svg": "/Fifth_Project/static/media/icon _trash.e8d9ed9b229839c90099.svg",
+    "index.html": "/Fifth_Project/index.html",
+    "main.d4f4a294.css.map": "/Fifth_Project/static/css/main.d4f4a294.css.map",
+    "main.73e601c7.js.map": "/Fifth_Project/static/js/main.73e601c7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d4f4a294.css",
+    "static/js/main.73e601c7.js"
+  ]
+}
