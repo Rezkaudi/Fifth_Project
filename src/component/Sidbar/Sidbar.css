@@ -1,0 +1,106 @@
+.sidebar {
+    @apply
+    /* sm */
+    bg-c2 w-0 h-[calc(100vh-8px)] text-c4 transition-[width] duration-1000 absolute overflow-y-auto rounded mr-3
+    /* md */
+    lg:w-0 lg:relative scroll-m-2
+}
+
+
+.sidebar.active {
+    @apply w-64
+}
+
+.sidebar .logo {
+    @apply mx-4 h-16 flex justify-center items-center border-b-2
+}
+
+
+/* .sidebar .sidebar-items {
+    @apply 
+} */
+
+.sidebar .sidebar-items .models,
+.sidebar .sidebar-items .plugins {
+    @apply w-full relative
+}
+
+.sidebar .sidebar-items .models span,
+.sidebar .sidebar-items .plugins span {
+    @apply block m-3 mt-7
+}
+
+.sidebar .sidebar-items .models .search {
+    @apply absolute top-0 right-2 bg-cover bg-no-repeat flex items-center flex-row-reverse w-40 h-7
+}
+
+.sidebar .sidebar-items .models .search img {
+    @apply w-4 h-4 bg-cover mx-3 bg-no-repeat cursor-pointer
+}
+
+.sidebar .sidebar-items .models .search input {
+    @apply w-0 outline-none transition-[width] rounded text-c1 p-0
+}
+
+.sidebar .sidebar-items .models .search input.activeSearch {
+    @apply w-32 outline-none p-1 border border-c1
+}
+
+.sidebar .sidebar-items .models ul,
+.sidebar .sidebar-items .plugins ul {
+    @apply ml-7
+}
+
+.sidebar .sidebar-items .models ul li,
+.sidebar .sidebar-items .plugins ul li {
+    @apply block my-1 h-12 hover:bg-c1 rounded-l relative
+}
+
+.sidebar .sidebar-items .models ul li {
+    @apply [&>a:before]:inline-block [&>a:before]:content-[""] [&>a:before]:w-2 [&>a:before]:h-2 [&>a:before]:rounded-full [&>a:before]:bg-c4 [&>a:before]:mx-3
+}
+
+
+.sidebar .sidebar-items .models ul li .trash {
+    @apply absolute top-4 right-4 w-4 h-4 bg-trash bg-cover bg-no-repeat cursor-pointer
+}
+
+.sidebar .sidebar-items .plugins ul li i img {
+    @apply inline-block w-4 h-4 mx-2 bg-cover bg-no-repeat
+}
+
+
+.sidebar .sidebar-items .models ul li.active,
+.sidebar .sidebar-items .plugins ul li.active {
+    @apply bg-c1
+}
+
+.sidebar .sidebar-items .models ul li a,
+.sidebar .sidebar-items .plugins ul li a {
+    @apply inline-block w-44 rounded p-3
+}
+
+.sidebar .user {
+    @apply relative w-full h-40 top-14 mt-2 flex items-center justify-center flex-col
+}
+
+.sidebar .user .circle {
+    @apply w-20 h-20 rounded-full bg-c4 m-3
+}
+
+.menuBtn {
+    @apply absolute top-[75vh] -left-1 w-10 h-10 
+    z-10 text-c1 font-bold text-4xl bg-c4 rounded-full cursor-pointer transition-all rotate-0 duration-1000 flex
+    items-center justify-center
+}
+
+.menuBtn span{
+    @apply block mb-1
+
+}
+.menuBtn.active {
+    @apply left-[239px] lg:left-[246px] bg-c1 text-c4 rotate-[405deg]
+}
+
+/* sm */
+/* md */
