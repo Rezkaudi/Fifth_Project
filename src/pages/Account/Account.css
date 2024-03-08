@@ -1,3 +1,4 @@
 .account {
-    @apply flex items-start justify-start h-screen
+    @apply flex items-start justify-start h-screen bg-c1
+    p-1 overflow-hidden
 }

@@ -1,6 +1,7 @@
 {
   "name": "Fifth_Project",
   "version": "0.1.0",
+  "homepage": "https://rezkaudi.github.io/Fifth_Project",
   "private": true,
   "dependencies": {
     "@material-tailwind/react": "^2.1.9",
