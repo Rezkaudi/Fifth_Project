@@ -1,7 +1,9 @@
 import './App.css'
-import { HashRouter as Router, Route, Routes } from 'react-router-dom'
-import {  useState } from 'react'
-
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { Provider } from "react-redux";
+import { store } from './store/store';
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 // pages
 import Home from './pages/Home/Home'
 import Dashboard from './pages/Dashboard/Dashboard'
@@ -10,65 +12,58 @@ import SignIn from './pages/SignIn/SignIn'
 
 import PageNotFound from './pages/404/PageNotFound'
 import Account from './pages/Account/Account'
-import Models from './pages/Models/Models'
+import Project from './pages/Project/Project'
 import Model from './pages/Model/Model'
-
-
-import ModelsContext from './Context/ModelsContext'
+import DashModel from './pages/DashModel/DashModel'
+import ProtectedRoute from './component/ProtectedRoute/ProtectedRoute'
+import Tokens from "./pages/Tokens/Tokens"
+import LogOut from "./pages/LogOut/LogOut"
 
 const App = () => {
-  const [models, setModels] = useState([
-    {
-      id: 1,
-      name: "users1"
-    },
-    {
-      id: 2,
-      name: "users2"
-    },
-    {
-      id: 3,
-      name: "users3"
-    },
-    {
-      id: 4,
-      name: "users4"
-    }
-  ])
-
-
-  // const [models, setModels] = useState([])
-  const value = { models, setModels }
-
 
   return (
-    <>
-      <ModelsContext.Provider value={value}>
-        <Router>
-          <Routes>
-            <Route index element={<Home />} />
-            <Route path='signin' element={<SignIn />} />
-            <Route path='signup' element={<SignUp />} />
-            {/* -------------------------------------------- */}
+    <Provider store={store}>
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
+      <Router>
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path='signin' element={<SignIn />} />
+          <Route path='signup' element={<SignUp />} />
+          <Route path='logOut' element={<LogOut />} />
+          {/* -------------------------------------------- */}
+          <Route element={<ProtectedRoute />}>
             <Route path='account' element={<Account />}>
 
-              <Route path='models' element={<Models />} >
-                {
-                  models && models.map((item) => <Route key={item.id} path={item.name} element={<Model />} />)
-                }
-                {/* <Route path=":model" element={<Model />} /> */}
-                <Route path='*' element={<PageNotFound />} />
+              <Route path=':projectName' element={<Project />}>
+                <Route path=':modelName' element={<Model />} />
               </Route>
 
-              <Route path='dashboard' element={<Dashboard />} />
-              <Route path='*' element={<PageNotFound />} />
-            </Route>
+              <Route path='dashboard' element={<Dashboard />}>
+                <Route path=':projectName' element={<Project />}>
+                  <Route path=':modelName' element={<DashModel />} />
+                </Route>
+              </Route>
 
-            <Route path='*' element={<PageNotFound />} />
-          </Routes>
-        </Router>
-      </ModelsContext.Provider>
-    </>
+              <Route path='tokens' element={<Tokens />} />
+            </Route>
+          </Route>
+          {/* -------------------------------------------- */}
+
+          <Route path='*' element={<PageNotFound />} />
+        </Routes>
+      </Router>
+    </Provider>
   )
 }
 

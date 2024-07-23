@@ -1,0 +1,27 @@
+.pagination {
+    @apply flex justify-start mt-4
+}
+
+.paginationButtons {
+    @apply relative z-0 inline-flex rounded-md shadow-sm -space-x-px
+}
+
+.paginationButtons button {
+    @apply px-4 py-2 border border-c2 bg-white text-xs text-c2 hover:bg-c1 w-20 text-center
+}
+
+.paginationButtons button:nth-child(1) {
+    @apply rounded-l
+}
+
+.paginationButtons button:nth-child(2) {
+    @apply cursor-default hover:bg-white
+}
+
+.paginationButtons button:nth-child(3) {
+    @apply rounded-r
+}
+
+.paginationButtons button.noneCursor {
+    @apply cursor-not-allowed
+}

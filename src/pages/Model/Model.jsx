@@ -1,22 +1,29 @@
 import { useEffect } from 'react'
 import './Model.css'
-import { useParams, useLocation } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
+import Table from '../../component/Table/Table'
+import ModelHeader from '../../component/ModelHeader/ModelHeader'
+import { useDispatch } from 'react-redux'
+import { getAllModelData, getModelFields } from '../../features/model/handleRequests'
 
 const Model = () => {
-    // const { model } = useParams()
+    const { modelName, projectName } = useParams()
     const location = useLocation()
+    const dispatch = useDispatch()
 
-    var model = location.pathname
-    model=model.replace("/account/models/","")
+    var path = location.pathname
+    path = path.replace("/account/", "")
 
-    
     useEffect(() => {
-        console.log(model);
-        
-    }, [])
+        dispatch(getAllModelData(modelName))
+        dispatch(getModelFields(modelName))
+    }, [dispatch,modelName])
 
     return (
-        <div>{model}</div>
+        <div className='w-full'>
+            <ModelHeader path={path} modelName={modelName} projectName={projectName} />
+            <Table modelName={modelName} />
+        </div>
     )
 }
 

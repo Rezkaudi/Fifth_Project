@@ -1,26 +1,23 @@
 import { Link } from 'react-router-dom'
 import './Sidbar.css'
-import { useContext } from 'react';
 
-
+import { Api } from '../../Api/Api';
 import Search from '../../assets/images/icon _search.svg'
 import Cog from '../../assets/images/icon _cog.svg'
 import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
 import { SideBarModel, SideBarItem } from '../SideBarItems/SideBarItems'
 // import dash from '../../assets/images/icon _dash.svg'
 
-import ModelsContext from '../../Context/ModelsContext';
+import UserProjects from '../UserProjects/UserProjects';
 
 
 const Sidbar = () => {
 
     const [activeSearch, setActiveSearch] = useState(false)
     const [activeSideBare, setActiveSideBare] = useState(true)
-    const { models } = useContext(ModelsContext)
-
-    const [instansModel, setInstansModel] = useState(models)
-    const [searsh, setSearsh] = useState("")
-
+    const { userData } = useSelector((state) => state.user);
+    const { userProjects } = useSelector((state) => state.allProjects);
 
     let handleActiveSearch = () => {
         setActiveSearch(pre => !pre)
@@ -34,15 +31,15 @@ const Sidbar = () => {
         setActiveSearch(false)
         if (window.innerWidth >= 1024) setActiveSideBare(true)
         else setActiveSideBare(false)
-
     }, [])
 
 
-    let handelChangeFilter = (e) => {
-        setSearsh(e.target.value.toLowerCase())
-    }
+    // let handelChangeFilter = (e) => {
+    //     setSearsh(e.target.value.toLowerCase())
+    // }
 
-    const filteredArray = instansModel.filter(str => str.name.toLowerCase().includes(searsh))
+
+    // const filteredArray = instansModel.filter(str => str.name.toLowerCase().includes(searsh))
 
 
 
@@ -53,37 +50,42 @@ const Sidbar = () => {
                     <Link to="/">LOGO</Link>
                 </div>
                 <ul className='sidebar-items'>
-                    <li className='models'>
-                        <span>Models</span>
+                    <li className='projects'>
+                        <span>Projects</span>
                         <i className='search'>
                             <img src={Search} alt="Search" onClick={handleActiveSearch} />
-                            <input className={activeSearch ? "activeSearch" : ""} type="search" onChange={handelChangeFilter} />
+                            <input className={activeSearch ? "activeSearch" : ""} type="search" />
                         </i>
                         <ul>
-                            {filteredArray ?
-                                filteredArray.map((item, index) => (
-                                    <SideBarModel key={index} to={`/account/models/${item.name}`} modelName={item.name} />
-                                )) :
-                                <li>loading ...</li>
+                            {
+                                userProjects && userProjects.length > 0 ?
+                                    userProjects.map(item =>
+                                        <UserProjects key={item.id} id={item.id} projectName={item.name} />
+                                    )
+                                    : userProjects && userProjects.length === 0 ? // Corrected condition
+                                        <div className="text-gray-600 text-sm">
+                                            No models found for this project.
+                                        </div>
+                                        : <div className="loading">loading ...</div>
                             }
-                            {/* {instansModel && instansModel.map((item, index) => (
-                                <SideBarModel key={index} to={`/account/models/${item.name}`} modelName={item.name} />
-                            ))} */}
                         </ul>
                     </li>
                     <li className='plugins'>
                         <span>Plugins</span>
                         <ul>
                             <SideBarItem to="/account/dashboard" itemName="Dashboard" icon={Cog} />
-                            <SideBarItem to="/account/setting" itemName="Setting" icon={Cog} />
+                            <SideBarItem to="/account/tokens" itemName="Tokens" icon={Cog} />
+                            <SideBarItem to="/logOut" itemName="LogOut" icon={Cog} />
                         </ul>
                     </li>
                 </ul>
 
-                <div className="user">
-                    <div className="circle"></div>
-                    <div className="userName">Rezk Audi</div>
-                </div>
+                {userData && <div className="user">
+                    <div className="circle">
+                        <img src={`${Api}${userData.profile_picture}`} alt="profile" />
+                    </div>
+                    <div className="userName">{userData.username}</div>
+                </div>}
             </aside>
             <div className={activeSideBare ? "menuBtn active" : "menuBtn"} onClick={handleActiveSideBare}>
                 <span>+</span>

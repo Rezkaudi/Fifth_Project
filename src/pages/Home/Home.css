@@ -1,0 +1,65 @@
+/* body{
+    background-color: #E2E8E4;
+} */
+
+.login{
+    height: 93%;
+
+}
+
+.Card-body{
+    width: 50%;
+    display: inline-block;
+}
+.squer{
+    position: absolute;
+    height: 62%;
+    width: 35%;
+}
+.squer2{
+    position: absolute;
+    width: 8%;
+    height: 22%;
+    left: 27%;
+    top: 15px;
+}
+.squer3{
+    position: absolute;
+    width:9%;
+    height: 30%;
+    left: 60%;
+    top:180px;
+}
+.div1{    
+    top: 350px;
+    height: 600px;
+    position: absolute;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+}
+.squer4{
+    width: 50%;
+    height: 50%;
+}
+@media(max-width:781px){
+    .squer{
+        width: 60%;
+        height: 50%;
+        top:50px
+    }
+    .squer2{
+        display: none;
+    }
+    .squer3{
+        display: none;
+    }
+}
+
+@media(max-width:600px){
+    .squer{
+        width: 60%;
+        height: 40%;
+        top:200px
+    }
+}

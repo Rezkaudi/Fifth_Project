@@ -6,17 +6,13 @@ import './SideBarItems.css'
 
 const SideBarModel = ({ to, modelName }) => {
 
-    const [activeDelModel, setActiveDelModel] = useState(false)
+    // const [activeDelModel, setActiveDelModel] = useState(false)
     const [activeModel, setActiveModel] = useState(false)
     const location = useLocation()
 
-    let handleActiveDelModel = (model) => {
-        setActiveDelModel(true)
-        console.log("del", activeDelModel, model)
-    }
 
     let handleActiveModel = () => {
-        if (location.pathname === to) {
+        if (location.pathname.includes(to)) {
             setActiveModel(true)
         }
         else {
@@ -26,12 +22,12 @@ const SideBarModel = ({ to, modelName }) => {
 
     useEffect(() => {
         handleActiveModel()
-    }, [location, activeModel])
+    }, [location, activeModel,modelName])
 
     return (
-        <li className={activeModel ? "active" : ""}>
+        <li className={activeModel ? "model active" : "model"}>
             <Link to={to} onClick={handleActiveModel}>{modelName}</Link>
-            <i className='trash' onClick={() => { handleActiveDelModel(modelName) }}></i>
+            {/* <i className='trash' onClick={() => { handleActiveDelModel(modelName) }}></i> */}
         </li>
     )
 }
@@ -43,7 +39,7 @@ const SideBarItem = ({ to, itemName, icon }) => {
 
 
     let handleActiveItem = () => {
-        if (location.pathname === to) {
+        if (location.pathname.includes(to)) {
             setActiveItem(true)
         }
         else {
@@ -63,7 +59,37 @@ const SideBarItem = ({ to, itemName, icon }) => {
     )
 }
 
+const DashSideBarModel = ({ to, modelName }) => {
+
+    const [activeDelModel, setActiveDelModel] = useState(false)
+    const [activeModel, setActiveModel] = useState(false)
+    const location = useLocation()
+
+
+    let handleActiveModel = () => {
+        if (location.pathname.includes(to)) {
+            setActiveModel(true)
+        }
+        else {
+            setActiveModel(false)
+        }
+    }
+
+    const handleActiveDelModel=()=>{
+        console.log("del");
+    }
+    useEffect(() => {
+        handleActiveModel()
+    }, [location, activeModel])
+
+    return (
+        <li className={activeModel ? "model active" : "model"} onClick={handleActiveModel}>
+            <Link to={to}>{modelName}</Link>
+            <i className='trash' onClick={() => { handleActiveDelModel(modelName) }}></i>
+        </li>
+    )
+}
 
 
 
-export { SideBarModel, SideBarItem }
+export { SideBarModel, SideBarItem, DashSideBarModel }

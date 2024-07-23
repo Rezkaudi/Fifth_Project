@@ -1,0 +1,20 @@
+.dashModelHeader {
+    @apply flex items-center justify-between w-full p-3 mt-3
+}
+
+.dashModelHeader .left .modelName {
+    @apply text-c2 text-2xl font-black mr-4
+}
+
+.dashModelHeader .left button {
+    @apply ml-3 w-6 h-6 hover:outline outline-c2 rounded outline-2 p-1
+}
+
+.dashModelHeader .left .path {
+    @apply text-xs font-medium ml-1 text-c2
+}
+
+
+.dashModelHeader .right button {
+    @apply py-2 px-10 bg-c1 text-c5 rounded
+}

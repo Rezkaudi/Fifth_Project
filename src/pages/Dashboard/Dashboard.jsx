@@ -1,9 +1,15 @@
 import './Dashboard.css'
 
+import DashSidebar from '../../component/DashSidebar/DashSidebar'
+import { Outlet } from 'react-router-dom'
+
 const Dashboard = () => {
     return (
-        <div className='pl-8 bg-c4 flex-1 h-[calc(100vh-8px)] rounded'>
-            Dashboard
+        <div className='dasboard'>
+            <DashSidebar />
+            <div className="default">
+                <Outlet />
+            </div>
         </div>
     )
 }

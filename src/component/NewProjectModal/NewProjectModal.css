@@ -1,0 +1,40 @@
+.NewProModalContainer .content {
+    @apply justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none animate-slide-from-top
+}
+
+.NewProModalContainer .content .contentContainer {
+    @apply w-[calc(100%/1.5)] my-6 mx-auto border-0 rounded-lg shadow-lg relative flex flex-col bg-white outline-none focus:outline-none
+}
+
+
+.NewProModalContainer .contentContainer .modelHeader {
+    @apply flex items-start justify-between p-5 border-b border-solid border-blue-200 rounded-t
+}
+
+.NewProModalContainer .contentContainer .modelHeader h3 {
+    @apply text-3xl font-semibold
+}
+
+.NewProModalContainer .contentContainer .modelBody {
+    @apply relative p-6 flex-auto
+}
+
+/* .NewProModalContainer .contentContainer .modelBody label {
+    @apply 
+} */
+
+.NewProModalContainer .contentContainer .modelBody input {
+    @apply border border-c2 ml-2
+}
+
+.NewProModalContainer.contentContainer .modelFooter {
+    @apply flex items-center justify-end p-6 border-t border-solid border-blue-200 rounded-b
+}
+
+.NewProModalContainer .contentContainer .modelFooter .close {
+    @apply text-red-500 bg-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150
+}
+
+.NewProModalContainer .contentContainer .modelFooter .save {
+    @apply bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150
+}

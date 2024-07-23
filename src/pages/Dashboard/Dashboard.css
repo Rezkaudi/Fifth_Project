@@ -1,0 +1,10 @@
+.dasboard{
+    @apply flex items-start justify-start
+    overflow-hidden bg-c1 flex-1 h-[calc(100vh-8px)]
+}
+
+.dasboard .default{
+    @apply bg-c4 rounded w-full
+    h-full 
+}
+

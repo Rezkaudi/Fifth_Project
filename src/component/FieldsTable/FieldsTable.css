@@ -1,0 +1,44 @@
+.DashTableData {
+    @apply border flex flex-col max-w-full overflow-hidden p-2 my-10 rounded
+}
+
+.DashTableData .tableContainer {
+    scrollbar-width: thin;
+    @apply overflow-auto border border-c2 max-w-full rounded max-h-[calc(100vh-250px)]
+}
+
+.DashTableData  button {
+    @apply my-2 w-40 p-2 bg-c1 text-c5 rounded ml-auto
+}
+
+.DashTableData .tableContainer table {
+    @apply overflow-auto rounded w-full
+}
+
+.DashTableData table thead {
+    @apply bg-c5 sticky top-0
+}
+
+.DashTableData table .col {
+    @apply px-6 py-3 text-left text-xs font-medium text-c3 uppercase tracking-wider
+}
+
+.DashTableData table tbody {
+    @apply bg-white divide-y divide-gray-200
+}
+
+.DashTableData tbody tr {
+    @apply hover:bg-c5
+}
+
+.DashTableData tbody .index {
+    @apply pl-1 py-4 border-r border-c2 text-center text-sm text-c3
+}
+
+.DashTableData tbody .cell {
+    @apply px-6 py-4 max-w-10 overflow-hidden
+}
+
+.DashTableData tbody .cell button {
+    @apply w-4 h-4 cursor-pointer mx-3
+}
