@@ -11,7 +11,7 @@ export const projectSlice = createSlice({
   name: "project",
   initialState,
   reducers: {
-    logOut: (state) => {},
+    fun: (state) => {},
   },
   extraReducers: (builder) => {
     // getProjectModels
@@ -29,5 +29,5 @@ export const projectSlice = createSlice({
   },
 });
 
-export const {} = projectSlice.actions;
+export const {fun} = projectSlice.actions;
 export default projectSlice.reducer;

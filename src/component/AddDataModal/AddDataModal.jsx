@@ -38,7 +38,7 @@ const AddDataModal = ({ content, modelName, projectName }) => {
         Promise.all(fetchPromises)
             .then(results => {
                 // Correctly provide an initial value for reduce to handle empty arrays
-                const combinedResults = results.reduce((acc, result) => ({ ...acc, ...result }, {}));
+                const combinedResults = results.reduce((acc, result) => ({ ...acc, ...result }));
                 setRelatedModel(prevState => ({ ...prevState, ...combinedResults }));
             })
             .catch(error => {
