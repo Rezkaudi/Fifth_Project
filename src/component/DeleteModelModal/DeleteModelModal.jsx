@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 import Delete from '../../assets/images/icon _trash-c2.svg'
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteModel, getAllUserModels } from '../../features/allModels/handleRequests'
+import { deleteModel } from '../../features/allModels/handleRequests'
 
 const DeleteModelModal = ({ modelName }) => {
 

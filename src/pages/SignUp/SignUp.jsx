@@ -6,7 +6,6 @@ import H1 from '../../component1/H1'
 import Button from '../../component1/Buttons/Button'
 import Link1 from '../../component1/Link1'
 
-import { signUpUser } from '../../Logic/auth'
 import SignUpImage from '../../assets/images/singup.png'
 
 import { useDispatch } from 'react-redux'

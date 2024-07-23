@@ -1,5 +1,4 @@
 import './ModelHeader.css'
-import Edit from '../../assets/images/edit-04-c2.svg'
 import Copy from '../../assets/images/copy-duplicate-c2.svg'
 
 

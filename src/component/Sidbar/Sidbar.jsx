@@ -6,7 +6,7 @@ import Search from '../../assets/images/icon _search.svg'
 import Cog from '../../assets/images/icon _cog.svg'
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
-import { SideBarModel, SideBarItem } from '../SideBarItems/SideBarItems'
+import { SideBarItem } from '../SideBarItems/SideBarItems'
 // import dash from '../../assets/images/icon _dash.svg'
 
 import UserProjects from '../UserProjects/UserProjects';

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import {useEffect } from "react";
 import './DashTable.css'
 // import Edit from '../../assets/images/edit-04-dark.svg'
 // import Trash from '../../assets/images/icon _trash-dark.svg'
@@ -6,21 +6,9 @@ import { useSelector } from "react-redux";
 
 
 
-const DashTable = ({ modelName }) => {
-    const { modelData, modelFields } = useSelector((state) => state.model)
+const DashTable = () => {
+    const { modelFields } = useSelector((state) => state.model)
 
-    //     const [coulmn, setCoulmn] = useState({
-    //         default_value
-    // is_key
-    // is_unique
-
-    // name
-
-    // notnull
-    // related_model
-
-    // type
-    //     })
 
     useEffect(() => {
         console.log(modelFields)

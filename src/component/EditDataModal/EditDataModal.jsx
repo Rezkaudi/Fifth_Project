@@ -19,15 +19,6 @@ const EditDataModal = ({ rowId, modelName, currentRowData, modelFields }) => {
    
 
     useEffect(() => {
-        function convertObjectToFormData(obj) {
-            for (const [key, value] of Object.entries(obj)) {
-                formData.set(key, value.toString());
-            }
-        }
-
-        // convertObjectToFormData(currentRowData)
-
-
         if (!modelFields || !Array.isArray(modelFields)) {
             console.log("modelFields is not an array or is undefined");
             return; // Ensure modelFields is an array
@@ -51,7 +42,7 @@ const EditDataModal = ({ rowId, modelName, currentRowData, modelFields }) => {
         Promise.all(fetchPromises)
             .then(results => {
                 // Correctly provide an initial value for reduce to handle empty arrays
-                const combinedResults = results.reduce((acc, result) => ({ ...acc, ...result }, {}));
+                const combinedResults = results.reduce((acc, result) => ({ ...acc, ...result }));
                 setRelatedModel(prevState => ({ ...prevState, ...combinedResults }));
             })
             .catch(error => {
