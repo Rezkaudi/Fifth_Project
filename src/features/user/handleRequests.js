@@ -19,7 +19,12 @@ export const signUp = createAsyncThunk(
       if (response.ok) {
         return data;
       } else {
-        return rejectWithValue(data);
+        let messages = [];
+        Object.keys(data).forEach((key) => {
+          data[key].forEach((message) => messages.push(`${key}: ${message}`));
+        });
+        console.log(messages);
+        return rejectWithValue(messages);
       }
     } catch (error) {
       return rejectWithValue(error.message);
@@ -47,7 +52,8 @@ export const signIn = createAsyncThunk(
         localStorage.setItem("userToken", data.token);
         return data;
       } else {
-        return rejectWithValue(data);
+        let error =data.non_field_errors[0]
+        return rejectWithValue(error);
       }
     } catch (error) {
       return rejectWithValue(error.message);
@@ -92,10 +98,11 @@ export const creatUserToken = createAsyncThunk(
         headers: {
           Authorization: `Token ${userToken}`,
         },
-        body:tokenData,
+        body: tokenData,
       });
       const data = await response.json();
       console.log(data);
+
       if (response.ok) {
         return data;
       } else {

@@ -34,7 +34,7 @@ export const allModelsSlice = createSlice({
       })
       .addCase(creatModel.rejected, (state, { payload }) => {
         state.loading = false;
-        toast.error("error");
+        toast.error(payload);
       });
 
     // getAllUserModels

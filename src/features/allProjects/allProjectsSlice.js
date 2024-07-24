@@ -37,7 +37,7 @@ export const allProjectsSlice = createSlice({
       })
       .addCase(creatProject.rejected, (state, { payload }) => {
         state.loading = false;
-        toast.error("error creatProject");
+        toast.error(payload);
       });
 
     // getAllUserProjects

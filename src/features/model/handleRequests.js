@@ -93,6 +93,7 @@ export const createModelRow = createAsyncThunk(
       });
       const data = await response.json();
       console.log(data);
+
       if (response.ok) {
         return { data, rowData };
       } else {
@@ -107,7 +108,7 @@ export const createModelRow = createAsyncThunk(
 export const updateModelRow = createAsyncThunk(
   "model/updateModelRow",
   async ({ modelName, rowId, rowData }, { rejectWithValue }) => {
-    console.log(rowData)
+    console.log(rowData);
     const userToken = localStorage.getItem("userToken");
 
     try {
@@ -118,12 +119,15 @@ export const updateModelRow = createAsyncThunk(
         },
         body: rowData,
       });
-      const data = await response.json();
-      console.log(data);
+      // const data = await response.json();
+
       if (response.ok) {
         return { rowId, rowData };
       } else {
-        return rejectWithValue("error");
+        const data = await response.json();
+        console.log(data);
+
+        return rejectWithValue(data.Error);
       }
     } catch (error) {
       return rejectWithValue(error.message);

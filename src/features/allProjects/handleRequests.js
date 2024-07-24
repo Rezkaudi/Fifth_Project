@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import {Api} from "../../Api/Api";
+import { Api } from "../../Api/Api";
 
 // creatProject , getAllUserProjects , updateProject , deleteProject , getProjectModels
 
@@ -13,7 +13,6 @@ export const creatProject = createAsyncThunk(
         method: "POST",
         headers: {
           Authorization: `Token ${userToken}`,
-
         },
         body: projectData,
       });
@@ -21,9 +20,10 @@ export const creatProject = createAsyncThunk(
       const data = await response.json();
 
       if (response.ok) {
-        return data
+        return data;
       } else {
-        return rejectWithValue("error");
+        console.log(data);
+        return rejectWithValue(data["Error "]);
       }
     } catch (error) {
       return rejectWithValue(error.message);
@@ -97,7 +97,7 @@ export const deleteProject = createAsyncThunk(
       // console.log(data)
 
       if (response.ok) {
-        return {projectId};
+        return { projectId };
       } else {
         return rejectWithValue("error");
       }

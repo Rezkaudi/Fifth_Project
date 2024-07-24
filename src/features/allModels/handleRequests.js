@@ -20,7 +20,8 @@ export const creatModel = createAsyncThunk(
       if (response.ok) {
         return data;
       } else {
-        return rejectWithValue(data.message);
+        console.log(data)
+        return rejectWithValue(data.Error);
       }
     } catch (error) {
       return rejectWithValue(error.message);

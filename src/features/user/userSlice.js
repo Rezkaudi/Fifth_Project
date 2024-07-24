@@ -42,7 +42,10 @@ export const userSlice = createSlice({
       })
       .addCase(signUp.rejected, (state, { payload }) => {
         state.loading = false;
-        toast.error("error");
+        // toast.error("error");
+        payload.forEach(message => {
+          toast.error(message);
+      });
       });
 
     //signIn
@@ -57,7 +60,7 @@ export const userSlice = createSlice({
       })
       .addCase(signIn.rejected, (state, { payload }) => {
         state.loading = false;
-        toast.error("error");
+        toast.error(payload);
       });
 
     //getUserData

@@ -16,7 +16,7 @@ const EditDataModal = ({ rowId, modelName, currentRowData, modelFields }) => {
     const [formData] = useState(new FormData());
     const [relatedModel, setRelatedModel] = useState(null)
 
-   
+
 
     useEffect(() => {
         if (!modelFields || !Array.isArray(modelFields)) {
@@ -50,57 +50,10 @@ const EditDataModal = ({ rowId, modelName, currentRowData, modelFields }) => {
             });
 
 
-      
-
-    }, [modelFields, dispatch,currentRowData,formData]);
 
 
-    // useEffect(() => {
-    //     const opj = {
-    //         "id": 7,
-    //         "name": "test23",
-    //         "email": "test1@gamil.com",
-    //         "age": 99,
-    //         "imageProfile": "https://univercity2.pythonanywhere.com/media/3_employee_3_imageProfile_7.JPG",
-    //         "companyId": 2
-    //     }
+    }, [modelFields, dispatch, currentRowData, formData]);
 
-    //     const types = [
-    //         {
-    //             "name": "id",
-    //             "type": "INTEGER",
-    //         },
-    //         {
-    //             "name": "name",
-    //             "type": "TEXT",
-    //         },
-    //         {
-    //             "name": "email",
-    //             "type": "TEXT",
-    //         },
-    //         {
-    //             "name": "age",
-    //             "type": "INTEGER",
-    //         },
-    //         {
-    //             "name": "imageProfile",
-    //             "type": "BLOB",
-    //         },
-    //         {
-    //             "name": "companyId",
-    //             "type": "INTEGER",
-    //         }
-    //     ]
-
-    //     // convertObjectToFormData(opj, types).then(formData => {
-    //     //     for (let [key, value] of formData.entries()) {
-    //     //         console.log(`${key}: ${value}`);
-    //     //     }
-    //     // }).catch(error => {
-    //     //     console.error("Error converting object to FormData:", error);
-    //     // });
-    //     // Example usage:
-    // }, [])
 
     const handelShowModal = () => {
         setShowModal(pre => !pre)
@@ -124,8 +77,11 @@ const EditDataModal = ({ rowId, modelName, currentRowData, modelFields }) => {
         //     console.log(`${key}: ${value}`);
         // }
 
-console.log(formData);
-        dispatch(updateModelRow({ modelName, rowId, rowData:formData })).unwrap().then(
+        for (let [key, value] of formData.entries()) {
+            console.log(`${key}: ${value}`);
+        }
+
+        dispatch(updateModelRow({ modelName, rowId, rowData: formData })).unwrap().then(
             () => {
                 dispatch(getAllModelData(modelName))
                 handelShowModal()
@@ -138,7 +94,10 @@ console.log(formData);
 
     useEffect(() => {
         setRowData(currentRowData)
-    }, [currentRowData])
+        Object.keys(currentRowData).forEach(key => {
+            formData.set(key, currentRowData[key]);
+        });
+    }, [currentRowData,formData])
 
     return (
         <>
