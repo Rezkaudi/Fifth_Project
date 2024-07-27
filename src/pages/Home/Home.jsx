@@ -6,7 +6,7 @@ import Navbar from '../../component1/navbar/Navbar'
 import ContainerB from '../../component1/Containers/ContainerB'
 import Card from '../../component1/Card'
 import ConfigIcon from "../../assets/images/icon _cog -c2.svg"
-import PenIcon from "../../assets/images/edit-04-c2.svg"
+// import PenIcon from "../../assets/images/edit-04-c2.svg"
 import AutoSlider from '../../component/Slider'
 import Logo from "../../assets/images/logo.png"
 import ContactForm from '../../component/ContactForm'
@@ -27,24 +27,26 @@ function Home() {
     <div className='bg-[#E2E8E4]'>
       <Navbar />
       <ContainerW >
-        <div className="flex justify-center items-start">
-          <img className='w-10 animate-spin' src={ConfigIcon} alt="ConfigIcon" />
+        <div className="flex justify-center items-center w-10 h-10 mt-10 absolute left-10">
+          <img className='w-10 animate-rotate' src={ConfigIcon} alt="ConfigIcon" />
         </div>
-        <div className="col-span-2  text-center">
-          <h1 className='text-blue1 font-bold text-3xl my-3'>Welcome in Builder Api</h1>
-          <div className='flex justify-center w-full'>
+        <div className="col-span-2 text-center flex items-center flex-col">
+          <h1 className='text-c1 font-bold text-3xl mb-5'>Welcome in Builder Api</h1>
+          <span className='text-c2 text-xl my-3 w-[300px] flex sm:w-full max-w-[900px] pt-5'>
+          We have developed this system to assist front-end developers in creating secure and valid APIs through a user-friendly interface with straight forward steps.           </span>
+          <div className='flex justify-center'>
             <p
               className=" w-20 my-10 bg-buttom px-3 py-1.5 rounded text-sm font-semibold leading-6 text-white shadow-sm hover:bg-buttom/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ">
               <Link to="/signup">Sign Up</Link>
             </p>
           </div>
         </div>
-        <div className="flex justify-center items-start">
-          <img className='w-10 animate-bounce' src={PenIcon} alt="Pen" />
+        <div className="flex justify-center items-start w-10 h-10 mt-10 absolute right-10">
+          <img className='w-10 animate-rotate' src={ConfigIcon} alt="ConfigIcon" />
         </div>
       </ContainerW>
 
-      <div className='container-fluid div1'>
+      <div className='container-fluid div1 mt-44 sm:mt-20'>
         <div className='bg-white border-2 rounded border-white mx-5 my-10 w-3/4 h- sm:max-w-[700px] sm:max-h-[400px] max-h-[200px]' data-aos="fade-in" >
           <AutoSlider />
         </div>

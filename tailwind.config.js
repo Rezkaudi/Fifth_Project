@@ -10,6 +10,7 @@ module.exports = {
       animation: {
         "slide-from-top": "bounceInDown 1s forwards",
         "fade-in": "fadeIn 8s ease-in-out forwards",
+      "rotate":"rotate 2s ease-in-out forwards infinite",
       },
       keyframes: {
         bounceInDown: {
@@ -34,6 +35,11 @@ module.exports = {
           to: {
             transform: "translateZ(0)",
             animationTimingFunction: "cubic-bezier(.215, .61, .355, 1)",
+          },
+        },
+        rotate: {
+          "100%": {
+            transform: "rotate(360deg)",
           },
         },
         fadeIn: {

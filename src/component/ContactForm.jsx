@@ -15,7 +15,7 @@ const ContactForm = () => {
       </div>
 
       {/* Form on the right, full width on mobile and half width on larger screens */}
-      <form onSubmit={handleSubmit} className=" md:w-1/2 p-4 space-y-7  md:rounded-lg">
+      <form onSubmit={handleSubmit} className=" md:w-1/2 px-4 pt-0 space-y-7  md:rounded-lg">
         <h2 className="text-3xl font-black text-center text-white pb-10">Contact Us</h2>
         <input
           type="text"

@@ -60,3 +60,8 @@
     }
 }
 
+
+.card:hover {
+  border-top: 1px solid #fff; /* Example: 2px solid black border on top */
+  border-bottom: 1px solid #fff; /* Example: 2px solid black border on bottom */
+}
