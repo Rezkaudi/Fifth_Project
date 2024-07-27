@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       animation: {
         "slide-from-top": "bounceInDown 1s forwards",
+        "fade-in": "fadeIn 8s ease-in-out forwards",
       },
       keyframes: {
         bounceInDown: {
@@ -33,6 +34,20 @@ module.exports = {
           to: {
             transform: "translateZ(0)",
             animationTimingFunction: "cubic-bezier(.215, .61, .355, 1)",
+          },
+        },
+        fadeIn: {
+          "0%": {
+            opacity: "0",
+          },
+          "5%": {
+            opacity: "1",
+          },
+          "95%": {
+            opacity: "1",
+          },
+          "100%": {
+            opacity: "0",
           },
         },
       },

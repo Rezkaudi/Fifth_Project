@@ -2,6 +2,7 @@ import './App.css'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { Provider } from "react-redux";
 import { store } from './store/store';
+import { useEffect } from "react"
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 // pages
@@ -18,9 +19,19 @@ import DashModel from './pages/DashModel/DashModel'
 import ProtectedRoute from './component/ProtectedRoute/ProtectedRoute'
 import Tokens from "./pages/Tokens/Tokens"
 import LogOut from "./pages/LogOut/LogOut"
+import 'aos/dist/aos.css';
+import AOS from 'aos';
+
 
 const App = () => {
-
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Global duration for all animations
+      easing: 'ease-in-out', // Global easing for all animations
+      delay: 0, // Global delay for all animations
+      once: true, // Whether the animation should only play once
+    });
+  }, []);
   return (
     <Provider store={store}>
       <ToastContainer

@@ -13,7 +13,11 @@
 
 @tailwind components;
 @tailwind utilities;
-
+/* @layer components {
+    .pulse {
+      animation: pulse 2s infinite ease-in-out;
+    }
+  } */
 
 /* .notification-tab>.active {
     @apply text-blue-500 border-b-blue-500 hover:text-blue-500;

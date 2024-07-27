@@ -14,20 +14,21 @@
 .squer{
     position: absolute;
     height: 62%;
+    width: 1000px;
     width: 35%;
 }
 .squer2{
     position: absolute;
     width: 8%;
     height: 22%;
-    left: 27%;
-    top: 15px;
+    left: 28%;
+    top: -70px;
 }
 .squer3{
     position: absolute;
     width:9%;
     height: 30%;
-    left: 60%;
+    right: 30%;
     top:180px;
 }
 .div1{    
@@ -38,14 +39,11 @@
     justify-content: center;
     display: flex;
 }
-.squer4{
-    width: 50%;
-    height: 50%;
-}
+
 @media(max-width:781px){
     .squer{
-        width: 60%;
-        height: 50%;
+        /* width: 60%;
+        height: 50%; */
         top:50px
     }
     .squer2{
@@ -58,8 +56,7 @@
 
 @media(max-width:600px){
     .squer{
-        width: 60%;
-        height: 40%;
         top:200px
     }
 }
+
