@@ -19,7 +19,7 @@ const Navbar = () => {
 
   return (
     <div className="sticky top-0 z-40 w-full h-10">
-      <nav className="flex items-center justify-between flex-wrap bg-ice py-6 lg:px-40 shadow-xl absolute w-full px-6">
+      <nav className="flex items-center justify-between flex-wrap bg-ice py-2 lg:px-40 shadow-xl absolute w-full px-6">
         <div className="flex items-center flex-no-shrink text-blue1 mr-6">
           <img className="w-20" src={Logo} alt="logo" />
         </div>

@@ -57,7 +57,7 @@ function Home() {
           content.map(cont => <Card key={cont.id} name={cont.name} content={cont.con} />)
         }
       </ContainerB>
-      <div className='grid grid-cols-1 lg:grid-cols-2 gap-5 px-10 py-32 ' name='service' >
+      <div className='grid grid-cols-1 md:grid-cols-2 gap-5 px-10 py-32 ' name='service' >
         <div className='justify-center flex'>
           <div className='text-left'>
             <p className='text-4xl text-blue1 font-bold text-center  md:text-left '>Documentation</p>
@@ -67,8 +67,8 @@ function Home() {
           </div>
         </div>
         <div className='justify-center flex'>
-          <div className='justify-center flex h-fit w-full'>
-            <div data-aos="fade-in" className=' w-full h- text-center aspect-video'  >
+          <div className='justify-center flex h-full w-full'>
+            <div data-aos="fade-in" className=' w-full h-full text-center aspect-video'  >
               <img className='w-full h-full' src={Doc} alt="" />
             </div>
           </div>
