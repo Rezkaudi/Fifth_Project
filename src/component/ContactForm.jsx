@@ -38,7 +38,7 @@ const ContactForm = () => {
         <button
           type="submit"
           style={{ backgroundColor: "#fff" }}
-          className="w-full py-2 text-white rounded transition duration-200"
+          className="w-full py-2 text-c1 rounded transition duration-200"
         >
           Send Message
         </button>
