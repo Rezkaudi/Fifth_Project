@@ -2,66 +2,98 @@
     background-color: #E2E8E4;
 } */
 
-.login{
+* {
+    font-family: 'Fira Code', 'Courier New', Courier, monospace;
+}
+
+.gradiantText {
+    background: linear-gradient(to right, #006C84, #FFCCBB 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* 
+    c1: "#006C84",
+        c2: "#6EB5C0",
+        c3: "#737373",
+        c4: "#FFFFFF",
+        c5: "#E2E8E4", */
+}
+
+.gradiantBg {
+    background: linear-gradient(to right, #006C84, #FFCCBB 70%);
+}
+
+.gradiantBgItalic {
+    background: linear-gradient(450deg, #006C84, #FFCCBB);
+}
+
+.login {
     height: 93%;
 
 }
 
-.Card-body{
+.Card-body {
     width: 50%;
     display: inline-block;
 }
-.squer{
+
+.squer {
     position: absolute;
     height: 62%;
     width: 1000px;
     width: 35%;
 }
-.squer2{
+
+.squer2 {
     position: absolute;
     width: 8%;
     height: 22%;
     left: 28%;
     top: -70px;
 }
-.squer3{
+
+.squer3 {
     position: absolute;
-    width:9%;
+    width: 9%;
     height: 30%;
     right: 30%;
-    top:180px;
+    top: 180px;
 }
-.div1{    
-    top: 350px;
+
+.div1 {
+    /* top: 350px;
     height: 600px;
-    position: absolute;
+    position: absolute; */
     width: 100%;
     justify-content: center;
     display: flex;
 }
 
-@media(max-width:781px){
-    .squer{
+@media(max-width:781px) {
+    .squer {
         /* width: 60%;
         height: 50%; */
-        top:50px
+        top: 50px
     }
-    .squer2{
+
+    .squer2 {
         display: none;
     }
-    .squer3{
+
+    .squer3 {
         display: none;
     }
 }
 
-@media(max-width:600px){
-    .squer{
-        top:200px
+@media(max-width:600px) {
+    .squer {
+        top: 200px
     }
 }
 
 
 .card:hover {
-  border-top: 1px solid #fff; /* Example: 2px solid black border on top */
-  border-bottom: 1px solid #fff; /* Example: 2px solid black border on bottom */
+    border-top: 1px solid #fff;
+    /* Example: 2px solid black border on top */
+    border-bottom: 1px solid #fff;
+    /* Example: 2px solid black border on bottom */
 }

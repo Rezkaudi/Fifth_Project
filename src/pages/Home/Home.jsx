@@ -18,9 +18,9 @@ import { FaTools } from 'react-icons/fa';
 
 function Home() {
   const content = [
-    { id: "01", name: <FaDatabase size={80} />, con: " API on the front-end using for getting information from a server and using it in the user interface, enabling real-time data retrieval and creating dynamic user experiences. However, not all APIs are limited to these as they have various functions and usage. " },
-    { id: "02", name: <FaProjectDiagram size={80} />, con: "API is a set of rules and valuable tools that allows different applications to communicate with each other. Depending on the API's type and the communication methods it enables, information can be shared easily and integration services help increase the developers’ performance and save considerable time.." },
-    { id: "03", name: <FaTools size={80} />, con: "Different APIs emerge for frontend development. In our website, we provide experience that are help to get api you need. If you are need using it, make sure proficient with different API integration." },
+    { id: "01", name: <FaDatabase size={80}/>, con: " API on the front-end using for getting information from a server and using it in the user interface, enabling real-time data retrieval and creating dynamic user experiences. However, not all APIs are limited to these as they have various functions and usage. " },
+    { id: "02", name: <FaProjectDiagram size={80}/>, con: "API is a set of rules and valuable tools that allows different applications to communicate with each other. Depending on the API's type and the communication methods it enables, information can be shared easily and integration services help increase the developers’ performance and save considerable time.." },
+    { id: "03", name: <FaTools size={80}/>, con: "Different APIs emerge for frontend development. In our website, we provide experience that are help to get api you need. If you are need using it, make sure proficient with different API integration." },
   ]
 
   return (
@@ -31,12 +31,19 @@ function Home() {
           <img className='w-10 animate-rotate' src={ConfigIcon} alt="ConfigIcon" />
         </div>
         <div className="col-span-2 text-center flex items-center flex-col">
-          <h1 className='text-c1 font-bold text-3xl mb-5'>Welcome in Builder Api</h1>
-          <span className='text-c2 text-xl my-3 w-[300px] flex sm:w-full max-w-[900px] pt-5'>
-          We have developed this system to assist front-end developers in creating secure and valid APIs through a user-friendly interface with straight forward steps.           </span>
+          <h1 className='text-c1 font-bold text-3xl mb-5 gradiantText'> Welcome to Builder API</h1>
+          <span className='text-c2 font-semibold text-xl flex justify-center sm:w-full max-w-[900px] py-7'>
+            Simplifying API Development for Front-End Developers
+          </span>
+
+          <span className='text-item text-sm sm:text-lg my-3 flex justify-center sm:w-full max-w-[900px] pt-5'>
+            At Builder API, we are dedicated to empowering front-end developers with a seamless and efficient way to create secure and valid APIs. Our system offers a user-friendly interface with straightforward steps, making API development accessible and hassle-free. Join us to experience a streamlined approach to building robust APIs.
+          </span>
+
+
           <div className='flex justify-center'>
             <p
-              className=" w-20 my-10 bg-buttom px-3 py-1.5 rounded text-sm font-semibold leading-6 text-white shadow-sm hover:bg-buttom/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ">
+              className="w-fit my-10 bg-c1 px-3 py-1.5 rounded text-sm font-semibold leading-6 text-white shadow-sm hover:bg-buttom/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 gradiantBg">
               <Link to="/signup">Sign Up</Link>
             </p>
           </div>
@@ -46,15 +53,15 @@ function Home() {
         </div>
       </ContainerW>
 
-      <div className='container-fluid div1 mt-44 sm:mt-20'>
-        <div className='bg-white border-2 rounded border-white mx-5 my-10 w-3/4 h- sm:max-w-[700px] sm:max-h-[400px] max-h-[200px]' data-aos="fade-in" >
+      <div className='container-fluid div1 sm:absolute sm:top-[350px] sm:mt-40'>
+        <div className='bg-white border-2 rounded border-white mx-5 my-10 w-3/4 sm:max-w-[700px] sm:max-h-[400px] max-h-[200px]' data-aos="fade-in" >
           <AutoSlider />
         </div>
         {/* <div className='bg-blue1 squer2 rounded-tl-large rounded-br-large sm:hidden lg:block' data-aos="fade-right"></div> */}
         {/* <div className='bg-blue1 squer3 sm:hidden lg:block' data-aos="fade-left"></div> */}
       </div>
-      <div className='w-full bg-buttom text-center text-white font-bold py-5' style={{ "paddingTop": "10rem" }} />
-      <ContainerB>
+      <div className='w-full gradiantBgItalic text-center text-white font-bold sm:py-10 sm:mt-48'  />
+      <ContainerB >
         {
           content.map(cont => <Card key={cont.id} name={cont.name} content={cont.con} />)
         }
@@ -62,7 +69,7 @@ function Home() {
       <div className='grid grid-cols-1 md:grid-cols-2 gap-5 px-10 py-32 ' name='service' >
         <div className='justify-center flex'>
           <div className='text-left'>
-            <p className='text-4xl text-blue1 font-bold text-center  md:text-left '>Documentation</p>
+            <p className='text-4xl text-blue1 font-bold text-center  md:text-left gradiantText'>Documentation</p>
             <p className=' text-item mt-10 md:max-w-[80%] text-justify md:text-left sm:leading-9 '>
               To use an API effectively, it is essential to have an in-depth understanding of the documentation provided. This documentation outlines important details such as endpoints, data formats, and authentication methods, ensuring a successful implementation.uou must know there are many kinds of API such as HTTP APIs ,REST (Representational State Transfer, or RESTful API) and Third-party SDKs
             </p>
@@ -114,16 +121,16 @@ function Home() {
         </div>
       </ContainerB> */}
 
-<footer className="bg-gray-800 text-white p-4 flex justify-between items-center">
-      <div className="flex items-center space-x-4">
-        <img src={Logo} alt="Company Logo" className="h-8 bg-white rounded" /> {/* Adjust the path to your logo */}
-        <span className="text-sm">© 2024 Your Company Name</span>
-      </div>
-      <div className="hidden sm:flex space-x-4">
-        <a href="/" className="text-sm hover:text-gray-300">Privacy Policy</a>
-        <a href="/" className="text-sm hover:text-gray-300">Terms of Service</a>
-      </div>
-    </footer>
+      <footer className="bg-gray-800 text-white p-4 flex justify-between items-center">
+        <div className="flex items-center space-x-4">
+          <img src={Logo} alt="Company Logo" className="h-8 bg-white rounded" /> {/* Adjust the path to your logo */}
+          <span className="text-sm">© 2024 Your Company Name</span>
+        </div>
+        <div className="hidden sm:flex space-x-4">
+          <a href="/" className="text-sm hover:text-gray-300">Privacy Policy</a>
+          <a href="/" className="text-sm hover:text-gray-300">Terms of Service</a>
+        </div>
+      </footer>
 
     </div>
 

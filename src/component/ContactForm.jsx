@@ -8,7 +8,7 @@ const ContactForm = () => {
   };
 
   return (
-    <section className="flex flex-col md:flex-row items-start justify-center py-16 px-10 bg-c1">
+    <section className="flex flex-col md:flex-row items-start justify-center py-16 px-10 gradiantBgItalic">
       {/* Image on the left, hidden on mobile screens */}
       <div className="hidden md:block md:w-1/2">
         <img src={Contact} alt="Contact Us" data-aos="fade-right" className="w-full h-auto md:rounded-lg" /> {/* Adjust the path to your image */}
