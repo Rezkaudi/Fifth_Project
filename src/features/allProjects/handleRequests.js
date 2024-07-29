@@ -99,6 +99,8 @@ export const deleteProject = createAsyncThunk(
       if (response.ok) {
         return { projectId };
       } else {
+        const data = await response.json();
+        console.log(data);
         return rejectWithValue("error");
       }
     } catch (error) {
