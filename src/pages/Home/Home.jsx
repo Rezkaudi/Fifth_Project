@@ -42,10 +42,10 @@ function Home() {
 
 
           <div className='flex justify-center'>
-            <p
+            <button
               className="w-fit my-10 bg-c1 px-3 py-1.5 rounded text-sm font-semibold leading-6 text-white shadow-sm hover:bg-buttom/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 gradiantBg">
               <Link to="/signup">Sign Up</Link>
-            </p>
+            </button>
           </div>
         </div>
         <div className="flex justify-center items-start w-10 h-10 mt-10 absolute right-10">
