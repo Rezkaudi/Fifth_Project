@@ -8,14 +8,15 @@ import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { SideBarItem } from '../SideBarItems/SideBarItems'
 // import dash from '../../assets/images/icon _dash.svg'
-
+import PrimaryLoading from "../PrimaryLoading/PrimaryLoading"
 import UserProjects from '../UserProjects/UserProjects';
+import Logo from "../../assets/images/logo.png"
 
 
 const Sidbar = () => {
 
     const [activeSearch, setActiveSearch] = useState(false)
-    const [activeSideBare, setActiveSideBare] = useState(true)
+    const [activeSideBare, setActiveSideBare] = useState(false)
     const { userData } = useSelector((state) => state.user);
     const { userProjects } = useSelector((state) => state.allProjects);
 
@@ -45,13 +46,17 @@ const Sidbar = () => {
 
     return (
         <>
-            <aside className={activeSideBare ? "sidebar active" : "sidebar"}>
+            <aside className={activeSideBare ? "sidebar active" : "sidebar unActive"}>
                 <div className="logo">
-                    <Link to="/">LOGO</Link>
+                    <Link  to="/account">
+                        <img className='w-20' src={Logo} alt="logo" />
+                    </Link>
                 </div>
                 <ul className='sidebar-items'>
                     <li className='projects'>
-                        <span>Projects</span>
+                        <Link to="/account" className='inline-block z-50'>
+                            <span> &#x25c0; Projects</span>
+                        </Link>
                         <i className='search'>
                             <img src={Search} alt="Search" onClick={handleActiveSearch} />
                             <input className={activeSearch ? "activeSearch" : ""} type="search" />
@@ -64,9 +69,9 @@ const Sidbar = () => {
                                     )
                                     : userProjects && userProjects.length === 0 ? // Corrected condition
                                         <div className="text-gray-600 text-sm">
-                                            No models found for this project.
+                                            No project.
                                         </div>
-                                        : <div className="loading">loading ...</div>
+                                        : <PrimaryLoading />
                             }
                         </ul>
                     </li>
@@ -87,7 +92,7 @@ const Sidbar = () => {
                     <div className="userName">{userData.username}</div>
                 </div>}
             </aside>
-            <div className={activeSideBare ? "menuBtn active" : "menuBtn"} onClick={handleActiveSideBare}>
+            <div className={activeSideBare ? "menuBtn active" : "menuBtn unActive"} onClick={handleActiveSideBare}>
                 <span>+</span>
             </div>
         </>

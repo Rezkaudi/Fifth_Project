@@ -1,36 +1,37 @@
+
 .deleteModell .content {
     @apply justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none animate-slide-from-top
 }
 
 .deleteModell .content .contentContainer {
-    @apply w-fit my-6 mx-auto border-0 rounded-lg shadow-lg relative flex flex-col bg-white outline-none focus:outline-none
+    @apply mx-5 w-full lg:w-1/3 border-0 rounded-lg shadow-lg relative flex flex-col outline-none focus:outline-none 
 }
 
 
-.deleteModell .contentContainer .modelHeader {
-    @apply flex items-start justify-between p-5 border-b border-solid border-blue-200 rounded-t
+.deleteModell .contentContainer .modelHeader1 {
+    @apply w-full flex flex-col justify-center items-center p-5 py-10 rounded-t bg-[#E2E8E4] 
 }
 
-.deleteModell .contentContainer .modelHeader h3 {
-    @apply text-3xl font-semibold
+.deleteModell .contentContainer .modelHeader1 h3 {
+    @apply text-lg font-semibold mt-10
+}
+
+.deleteModell .contentContainer .modelHeader1 p {
+    @apply text-[#555] text-xs px-16 mt-5
 }
 
 .deleteModell .contentContainer .modelBody {
     @apply relative p-6 flex-auto
 }
 
-.deleteModell .contentContainer .modelFooter {
-    @apply flex items-center justify-end p-6 border-t border-solid border-blue-200 rounded-b 
+.deleteModell .contentContainer .modelFooter1 {
+    @apply flex items-center justify-between p-3 bg-[#ddd] rounded-b
 }
 
-.deleteModell .contentContainer .modelFooter .close {
-    @apply flex items-center justify-center  text-red-500 bg-transparent font-bold uppercase text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 
+.deleteModell .contentContainer .modelFooter1 .close {
+    @apply  bg-transparent font-bold px-6 py-2 bg-white rounded text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 block
 }
 
-.deleteModell .contentContainer .modelFooter .save {
-    padding: 0;
-    margin: 0;
-    width: fit-content;
-    height: fit-content;
-    @apply  bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm  rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 px-6 py-2
+.deleteModell .contentContainer .modelFooter1 .save {
+    @apply flex items-center justify-center text-white bg-c2 font-bold text-sm px-6 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150
 }

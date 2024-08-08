@@ -1,0 +1,18 @@
+
+.ProjectSidebar .projects .model,
+.ProjectSidebar .plugins ul li {
+    @apply flex items-center justify-start my-1 h-12 hover:bg-c1 rounded-l relative overflow-hidden
+}
+
+.ProjectSidebar .projects .model a{
+    @apply w-full overflow-auto
+}
+
+.ProjectSidebar .projects .model {
+    @apply [&>a:before]:inline-block [&>a:before]:content-[""] [&>a:before]:w-2 [&>a:before]:h-2 [&>a:before]:rounded-full [&>a:before]:bg-c4 [&>a:before]:mx-3
+}
+
+
+.ProjectSidebar .projects .model.active {
+    @apply [&>a:before]:bg-c2 bg-white
+}

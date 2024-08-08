@@ -1,16 +1,20 @@
 import './FieldsModal.css'
-import { useState } from 'react'
+import { useState ,useEffect} from 'react'
 
 import AddFieldModal from '../AddFieldModal/AddFieldModal'
 import FieldsTable from '../FieldsTable/FieldsTable'
 import { creatModel } from '../../features/allModels/handleRequests'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllUserModels } from '../../features/allModels/handleRequests'
+import { getProjectModels } from '../../features/allProjects/handleRequests'
+import { toast } from 'react-toastify';
 
 
-const FieldsModal = ({ hidden, modelName, projectName, userProjectModels }) => {
+const FieldsModal = ({ hidden, modelName, projectName }) => {
 
     const [fields, setFields] = useState([])
+    const { userProjects, userProjectModels } = useSelector((state) => state.allProjects);
+    const [projectId, setProjectId] = useState(null)
+
     const { loading } = useSelector((state) => state.allModels)
     const dispatch = useDispatch()
 
@@ -21,7 +25,23 @@ const FieldsModal = ({ hidden, modelName, projectName, userProjectModels }) => {
 
     const [showModal, setShowModal] = useState(false);
 
+
+    useEffect(() => {
+        const getProjectId = (projectName) => {
+            let pId = userProjects?.find((item) => {
+                return item.name === projectName;
+            });
+            let pi = pId?.id
+            return pi
+        }
+        setProjectId(getProjectId(projectName))
+    }, [projectName, userProjects])
+
     const handelShowModal = () => {
+        if (modelName === "") {
+            toast.error("please fill all field")
+            return
+        }
         setShowModal(pre => !pre)
     }
 
@@ -76,7 +96,8 @@ const FieldsModal = ({ hidden, modelName, projectName, userProjectModels }) => {
 
         dispatch(creatModel(formData)).unwrap().then(
             () => {
-                dispatch(getAllUserModels());
+                // dispatch(getAllUserModels());
+                dispatch(getProjectModels(projectId))
                 handelCloseAll()
             },
             (error) => {
@@ -90,19 +111,24 @@ const FieldsModal = ({ hidden, modelName, projectName, userProjectModels }) => {
             <button className="save" onClick={handelShowModal}>Next</button>
             {showModal &&
                 <div className='feildModalContainer'>
-                    <div className="content">
+                    <div className="content max-h-screen">
                         <form onSubmit={handleSubmit} className="contentContainer">
                             {/*header*/}
-                            <div className="modelHeader">
-                                <h3>All model Feilds</h3>
+                            <div className="modelHeader ">
+                                <h3>Final Model Data</h3>
                             </div>
+                            <hr className='bg-slate-500 h-[2px] mx-5' />
                             {/*body*/}
                             <div className="modelBody">
+                                <label className='block mb-2' htmlFor="modelName">Model Name :</label>
+                                <input className='rounded h-8 px-1 outline-none bg-gray-300'  name="modelName" id="modelName" type="text" defaultValue={modelName}  readOnly/>
+
                                 <FieldsTable fields={fields} onDelete={handleDeleteField} />
                             </div>
                             {/*footer*/}
-                            <div className="modelFooter">
-                                <button className="close" onClick={handelCloseAll} disabled={loading}>Close</button>
+                            <div className="modelFooter3 rounded flex items-center justify-between p-6 bg-[#ccc]">
+                                <button className="close" onClick={() => setShowModal(false)} disabled={loading}>Back</button>
+                                <div className='flex items-center justify-center gap-2'>
                                 <AddFieldModal fields={fields} setFields={setFields} userProjectModels={userProjectModels} />
                                 <button type='submit' className="save" disabled={loading}>
                                     Save Changes
@@ -114,10 +140,11 @@ const FieldsModal = ({ hidden, modelName, projectName, userProjectModels }) => {
                                         ></span>
                                     )}
                                 </button>
+                                </div>
                             </div>
                         </form>
                     </div>
-                    <div className="opacity-50 fixed inset-0 z-40 bg-black"></div>
+                    {/* <div className="opacity-50 fixed insset-0 z-40 bg-black"></div> */}
                 </div>
             }
         </>

@@ -14,11 +14,15 @@ import SignIn from './pages/SignIn/SignIn'
 import PageNotFound from './pages/404/PageNotFound'
 import Account from './pages/Account/Account'
 import Project from './pages/Project/Project'
+import DashProject from './pages/DashProject/DashProject'
 import Model from './pages/Model/Model'
 import DashModel from './pages/DashModel/DashModel'
+import EditRowData from './pages/EditRowData/EditRowData';
+import ShowRowData from './pages/ShowRowData/ShowRowData';
 import ProtectedRoute from './component/ProtectedRoute/ProtectedRoute'
 import Tokens from "./pages/Tokens/Tokens"
 import LogOut from "./pages/LogOut/LogOut"
+import AddRowData from './pages/AddRowData/AddRowData';
 import 'aos/dist/aos.css';
 import AOS from 'aos';
 
@@ -57,11 +61,23 @@ const App = () => {
             <Route path='account' element={<Account />}>
 
               <Route path=':projectName' element={<Project />}>
-                <Route path=':modelName' element={<Model />} />
+                <Route path=':modelName' element={<Model />}>
+
+                  <Route path='editRow' element={<EditRowData />} >
+                    <Route path=':rowId' />
+                  </Route>
+
+                  <Route path='showRow' element={<ShowRowData />} >
+                    <Route path=':rowId'/>
+                  </Route>
+
+                  <Route path='addRow' element={<AddRowData />} />
+
+                </Route>
               </Route>
 
               <Route path='dashboard' element={<Dashboard />}>
-                <Route path=':projectName' element={<Project />}>
+                <Route path=':projectName' element={<DashProject />}>
                   <Route path=':modelName' element={<DashModel />} />
                 </Route>
               </Route>

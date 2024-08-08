@@ -3,29 +3,32 @@
 }
 
 .feildModalContainer .content .contentContainer {
-    @apply w-[calc(100%/1.5)] my-6 mx-auto border-0 rounded-lg shadow-lg relative flex flex-col bg-white outline-none focus:outline-none
+    @apply mx-5 w-full lg:w-1/2  border-0 rounded-lg shadow-lg relative flex flex-col bg-[#E2E8E4] outline-none focus:outline-none 
 }
 
 .feildModalContainer .contentContainer .modelHeader {
-    @apply flex items-start justify-between p-5 border-b border-solid border-blue-200 rounded-t
+    border: none !important;
+    @apply flex items-center justify-between rounded-t
 }
 
 .feildModalContainer .contentContainer .modelHeader h3 {
-    @apply text-3xl font-semibold
+    @apply text-xl font-semibold text-[#737373]
 }
 
 .feildModalContainer .contentContainer .modelBody {
     @apply relative p-6 flex-auto
 }
 
-.feildModalContainer .contentContainer .modelFooter {
-    @apply flex items-center justify-end p-6 border-t border-solid border-blue-200 rounded-b
+.feildModalContainer .contentContainer .modelFooter3 {
+    border:  none !important;
+    @apply flex items-center justify-between p-6
 }
 
-.feildModalContainer .contentContainer .modelFooter .close {
-    @apply text-red-500 bg-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150
+.feildModalContainer .contentContainer .modelFooter3 .close {
+    background-color: white !important;
+    @apply text-[#777]  bg-transparent font-bold px-6 py-3 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150
 }
 
-.feildModalContainer .contentContainer .modelFooter .save {
-    @apply bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150
+.feildModalContainer .contentContainer .modelFooter3 .save {
+    @apply flex items-center justify-center bg-c2 text-white active:bg-c2 font-bold text-xs px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150
 }

@@ -42,26 +42,27 @@ const NewProjectModal = () => {
 
     return (
         <>
-            <div className="createNew" onClick={handelShowModal}>
+            <button className="createNew" onClick={handelShowModal}>
                 + create new project
-            </div>
+            </button>
             {showModal &&
                 <div className='NewProModalContainer'>
                     <form className="content" onSubmit={handleSubmit}>
                         <div className="contentContainer">
                             {/*header*/}
-                            <div className="modelHeader">
+                            <div className="modelHeader ">
                                 <h3>Create new project</h3>
                             </div>
+                            <hr className='bg-slate-500 h-[2px] mx-5'/>
                             {/*body*/}
-                            <div className="modelBody">
-                                <label htmlFor="name">Enter Project Name :</label>
-                                <input name="name" id="name" type="text" value={name} required onChange={handleChange} />
+                            <div className="modelBody h-[250px]">
+                                <label className='block ml-2 mb-2' htmlFor="name">Enter Project Name :</label>
+                                <input className='rounded h-8' name="name" id="name" type="text" value={name} required onChange={handleChange} />
                             </div>
                             {/*footer*/}
-                            <div className="modelFooter">
-                                <button className="close" disabled={loading} onClick={handelShowModal}>Close</button>
-                                <button type='submit' className="save" disabled={loading}>Create Project
+                            <div className="rounded flex items-center justify-between p-6 bg-[#ccc]">
+                                <button className="close1" disabled={loading} onClick={handelShowModal}>Cancel</button>
+                                <button type='submit' className="save1" disabled={loading}>Create Project
                                     {loading && (
                                         <span
                                             className="animate-spin h-5 ml-2 w-5 border-t-2 border-b-2 border-c4 rounded-full inline-block"

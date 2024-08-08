@@ -32,7 +32,7 @@ export const modelSlice = createSlice({
       })
       .addCase(getAllModelData.fulfilled, (state, { payload }) => {
         state.modelData = payload;
-        toast.success("successfull getAllModelData");
+        // toast.success("successfull getAllModelData");
       })
       .addCase(getAllModelData.rejected, (state, { payload }) => {
         toast.error("error");
@@ -45,7 +45,7 @@ export const modelSlice = createSlice({
       })
       .addCase(getModelFields.fulfilled, (state, { payload }) => {
         state.modelFields = payload;
-        toast.success("successfull getModelFields");
+        // toast.success("successfull getModelFields");
       })
       .addCase(getModelFields.rejected, (state, { payload }) => {
         toast.error("error");

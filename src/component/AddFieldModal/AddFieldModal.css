@@ -1,52 +1,56 @@
 
-.modalContainer .content {
-    @apply justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none animate-slide-from-top pt-6 pb-6
+.addField .modalContainer .content {
+    @apply justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none animate-slide-from-top  pb-6
 }
 
-.modalContainer .content .contentContainer {
-    @apply w-[calc(100%/1.5)] mx-auto border-0 rounded-lg shadow-lg relative flex flex-col bg-white outline-none focus:outline-none my-auto
+.addField .modalContainer .content .contentContainer {
+    @apply mx-5 w-full lg:w-1/2 my-1 border-0 rounded-lg shadow-lg relative flex flex-col bg-[#E2E8E4] outline-none focus:outline-none 
 }
 
 
-.contentContainer .modelHeader {
-    @apply flex items-start justify-between p-5 border-b border-solid border-blue-200 rounded-t
+.addField .contentContainer .modelHeader {
+    border: none !important;
+    /* padding-top: px !important   ; */
+    @apply flex items-center justify-between rounded-t 
 }
 
-.contentContainer .modelHeader h3 {
-    @apply text-xl font-semibold
+.addField .contentContainer .modelHeader h3 {
+    @apply text-xl font-semibold text-[#737373]
 }
 
-.contentContainer .modelBody {
+.addField .contentContainer .modelBody {
     @apply relative p-6 flex-auto text-c3
 }
 
-.contentContainer .modelBody ol {
-    @apply list-decimal ml-5
+.addField .contentContainer .modelBody ol {
+    @apply list-none mx-2
 }
 
-.contentContainer .modelBody ol li {
-    @apply my-6
+.addField .contentContainer .modelBody .types label {
+    @apply  border border-c2 m-0 rounded h-12
 }
 
-.contentContainer .modelBody ol li label {
+.addField .contentContainer .modelBody ol li label {
     @apply mx-2
 }
 
-.contentContainer .modelBody ol li input {
+.addField .contentContainer .modelBody ol li input {
     @apply border border-c2 w-32 rounded
 }
 
 
 
 
-.contentContainer .modelFooter {
-    @apply flex items-center justify-end p-6 border-t border-solid border-blue-200 rounded-b
+.addField .contentContainer .modelFooter1 {
+    border:  none !important;
+    @apply flex items-center justify-end rounded-b p-0
 }
 
-.contentContainer .modelFooter .close {
-    @apply text-red-500 bg-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150
+.addField .contentContainer .modelFooter .close {
+    background-color: white !important;
+    @apply text-[#777]  bg-transparent font-bold px-6 py-3 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150
 }
 
-.contentContainer .modelFooter .save {
-    @apply bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150
+.addField .contentContainer .modelFooter .save {
+    @apply flex items-center justify-center bg-c2 text-white active:bg-c2 font-bold text-xs px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150
 }

@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import './Model.css'
-import { useLocation, useParams } from 'react-router-dom'
+import { useLocation, useParams, Outlet } from 'react-router-dom'
 import Table from '../../component/Table/Table'
 import ModelHeader from '../../component/ModelHeader/ModelHeader'
 import { useDispatch } from 'react-redux'
@@ -17,13 +17,21 @@ const Model = () => {
     useEffect(() => {
         dispatch(getAllModelData(modelName))
         dispatch(getModelFields(modelName))
-    }, [dispatch,modelName])
+
+
+        console.log("loc", location.pathname);
+    }, [dispatch, modelName, location])
 
     return (
-        <div className='w-full'>
-            <ModelHeader path={path} modelName={modelName} projectName={projectName} />
-            <Table modelName={modelName} />
-        </div>
+        <>
+            {location.pathname === `/account/${projectName}/${modelName}` ?
+                <div className='w-full p-2 px-5'>
+                    <ModelHeader path={path} modelName={modelName} projectName={projectName} />
+                    <Table modelName={modelName} projectName={projectName} />
+                </div> :
+                <Outlet />
+            }
+        </>
     )
 }
 

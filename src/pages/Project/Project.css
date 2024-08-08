@@ -1,0 +1,13 @@
+.projectDash {
+    @apply flex items-start justify-start overflow-x-hidden bg-c1 flex-1 h-[calc(100vh-8px)]
+}
+
+.projectDash .default {
+
+    overflow-y: auto !important;
+    @apply bg-c4 rounded flex-1 h-full
+}
+
+*{
+    scrollbar-width: thin;
+}

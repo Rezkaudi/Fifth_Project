@@ -8,7 +8,7 @@
 }
 
 .dashSidebar.active {
-    @apply w-80
+    @apply w-48
 }
 
 .dashSidebar .projectsTop {
@@ -76,7 +76,7 @@
 }
 
 .createNew {
-    @apply cursor-pointer w-full ml-2 hover:text-c4 mb-3 text-xs
+    @apply cursor-pointer w-full  hover:text-c4  text-xs
 }
 
 .dashSidebar .arrow {

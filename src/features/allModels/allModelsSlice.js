@@ -45,7 +45,7 @@ export const allModelsSlice = createSlice({
       .addCase(getAllUserModels.fulfilled, (state, { payload }) => {
         state.userModels = payload;
         console.log(payload);
-        toast.success("successful getAllUserModels");
+        // toast.success("successful getAllUserModels");
       })
       .addCase(getAllUserModels.rejected, (state, { payload }) => {
         toast.error(payload);

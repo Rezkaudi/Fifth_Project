@@ -4,28 +4,30 @@ import { useNavigate } from 'react-router-dom'
 
 import Delete from '../../assets/images/icon _trash-c2.svg'
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteModel } from '../../features/allModels/handleRequests'
+import { deleteProjectModel } from '../../features/allProjects/handleRequests'
 
-const DeleteModelModal = ({ modelName }) => {
+const DeleteModelModal = ({ modelName, projectName }) => {
 
     const navigate = useNavigate()
 
     const [showModal, setShowModal] = useState(false);
-    const { loading } = useSelector((state) => state.allModels);
+    const { loading } = useSelector((state) => state.allProjects);
     const dispatch = useDispatch()
 
 
-    const handelShowModal = () => {
+    const handelShowModal = (e) => {
+        e?.stopPropagation()
         setShowModal(pre => !pre)
     }
 
-    const handleDelete = async () => {
+    const handleDelete = (e) => {
+        e?.stopPropagation()
         console.log("delete", modelName);
 
-        dispatch(deleteModel(modelName)).unwrap().then(
+        dispatch(deleteProjectModel(modelName)).unwrap().then(
             () => {
                 // dispatch(getAllUserModels(modelName))
-                navigate("/account/dashboard")
+                navigate(`/account/${projectName}`)
                 handelShowModal()
             },
             (error) => {
@@ -37,25 +39,27 @@ const DeleteModelModal = ({ modelName }) => {
 
     return (
         <>
-            <button title='Delete this model' onClick={handelShowModal}>
-                <img src={Delete} alt="Delete" />
-            </button>
+            <span className="del cursor-pointer w-7 h-7 p-1 z-40 hover:border border-c1 rounded flex items-center justify-center" onClick={handelShowModal} title="delete">
+                <img src={Delete} alt="del" />
+            </span>
             {showModal &&
-                <div className='deleteModell'>
+                <div className='deleteModell' onClick={(e) => e.stopPropagation()}>
                     <div className="content">
                         <div className="contentContainer">
                             {/*header*/}
-                            <div className="modelHeader">
-                                <h3>Do you need to delete this table</h3>
+                            <div className="modelHeader1">
+                                <img src={Delete} alt="delete" />
+                                <h3>Delete {modelName} Model </h3>
+                                <p>Are you sure you would like to do this ? </p>
                             </div>
                             {/*footer*/}
-                            <div className="modelFooter">
-                                <button className="close" disabled={loading} onClick={handelShowModal}>No</button>
+                            <div className="modelFooter1">
+                                <button className="close" disabled={loading} onClick={handelShowModal}>Cancle</button>
                                 <button className="save" disabled={loading} onClick={handleDelete}>
-                                    Yes
+                                    Confirm
                                     {loading && (
                                         <span
-                                            className=" animate-spin h-5 ml-2 w-5 border-t-2 border-b-2 border-c4 rounded-full inline-block z-10"
+                                            className="animate-spin h-5 ml-2 w-5 border-t-2 border-b-2 border-c4 rounded-full inline-block"
                                             role="status"
                                             aria-live="polite"
                                         ></span>

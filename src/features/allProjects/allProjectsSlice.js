@@ -4,6 +4,7 @@ import {
   getAllUserProjects,
   deleteProject,
   // updateProject,
+  deleteProjectModel,
   getProjectModels,
 } from "./handleRequests";
 import { toast } from "react-toastify";
@@ -48,7 +49,7 @@ export const allProjectsSlice = createSlice({
       .addCase(getAllUserProjects.fulfilled, (state, { payload }) => {
         state.loading = false;
         state.userProjects = payload;
-        toast.success("successfull getAllUserProjects");
+        // toast.success("successfull getAllUserProjects");
       })
       .addCase(getAllUserProjects.rejected, (state, { payload }) => {
         state.loading = false;
@@ -62,7 +63,7 @@ export const allProjectsSlice = createSlice({
       })
       .addCase(deleteProject.fulfilled, (state, { payload }) => {
         state.loading = false;
-        console.log(payload)
+        console.log(payload);
         state.userProjects = state.userProjects.filter((item) => {
           return item.id !== payload.projectId;
         });
@@ -73,15 +74,34 @@ export const allProjectsSlice = createSlice({
         toast.error(payload);
       });
 
+    // deleteProjectModel
+
+    builder
+      .addCase(deleteProjectModel.pending, (state, { payload }) => {
+        state.loading = true;
+      })
+      .addCase(deleteProjectModel.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        state.userProjectModels = state.userProjectModels.filter((item) => {
+          return item.modelname !== payload.modelName;
+        });
+        toast.success("successfull deleteProjectModel");
+      })
+      .addCase(deleteProjectModel.rejected, (state, { payload }) => {
+        state.loading = false;
+        toast.error(payload);
+      });
+
     // getProjectModels
     builder
       .addCase(getProjectModels.pending, (state, { payload }) => {
         state.loading = true;
+        state.userProjectModels = null;
       })
       .addCase(getProjectModels.fulfilled, (state, { payload }) => {
         state.loading = false;
         state.userProjectModels = payload;
-        toast.success("successfull getProjectModels");
+        // toast.success("successfull getProjectModels");
       })
       .addCase(getProjectModels.rejected, (state, { payload }) => {
         state.loading = false;

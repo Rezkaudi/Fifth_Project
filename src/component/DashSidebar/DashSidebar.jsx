@@ -1,5 +1,6 @@
 
 import './DashSidebar.css'
+import { useState } from 'react'
 
 import Search from '../../assets/images/icon _search.svg'
 import DashProject from '../DashProject/DashProject'
@@ -8,15 +9,19 @@ import { useSelector } from 'react-redux'
 
 const DashSidebar = () => {
     const { userProjects } = useSelector((state) => state.allProjects);
+    const [activeSearch, setActiveSearch] = useState(false)
 
+    const handelActiceSearch = () => {
+        setActiveSearch(pre => !pre)
+    }
     return (
         <aside className='dashSidebar active'>
             <div className="projectsTop">
                 <span>Projects</span>
                 <i className='search'>
-                    <img src={Search} alt="Search" />
-                    <input className="activeSearch" type="search" />
-                </i>
+                        <img src={Search} alt="Search" onClick={handelActiceSearch} />
+                        <input className={activeSearch ? "activeSearch" : ""} type="search" />
+                    </i>
             </div>
 
             <ul className="projects">

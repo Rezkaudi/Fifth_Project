@@ -67,7 +67,7 @@ export const userSlice = createSlice({
     builder
       .addCase(getUserData.fulfilled, (state, { payload }) => {
         state.userData = payload;
-        toast.success("successfull getUserData");
+        // toast.success("successfull getUserData");
       })
       .addCase(getUserData.rejected, (state, { payload }) => {
         toast.error("error");
@@ -92,7 +92,7 @@ export const userSlice = createSlice({
     builder
       .addCase(getUserTokens.fulfilled, (state, { payload }) => {
         state.userTokens = payload;
-        toast.success("successfull getUserTokens");
+        // toast.success("successfull getUserTokens");
       })
       .addCase(getUserTokens.rejected, (state, { payload }) => {
         toast.error("error");

@@ -1,15 +1,14 @@
 import './ModelHeader.css'
 import Copy from '../../assets/images/copy-duplicate-c2.svg'
+import { Link } from 'react-router-dom'
 
-
-import AddDataModal from '../AddDataModal/AddDataModal'
 import { Api } from '../../Api/Api'
 
 const ModelHeader = ({ path, modelName, projectName }) => {
 
     // const userData = path.split('/')
 
-    const copyUrl = async() => {
+    const copyUrl = async () => {
         const url = `${Api}/data/${modelName}/`
         try {
             await navigator.clipboard.writeText(url)
@@ -30,7 +29,10 @@ const ModelHeader = ({ path, modelName, projectName }) => {
                 <div className="path">{path}</div>
             </div>
             <div className="right">
-                <AddDataModal content={"Add Data"} modelName={modelName} projectName={projectName} />
+                <button className='createNew'>
+                    <Link to={`/account/${projectName}/${modelName}/addRow`}>+ Add Data</Link>
+                </button>
+                {/* <AddDataModal content={" + Add Data"} modelName={modelName} projectName={projectName} /> */}
             </div>
         </header>
 

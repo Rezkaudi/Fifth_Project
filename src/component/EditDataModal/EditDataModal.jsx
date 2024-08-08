@@ -1,11 +1,10 @@
 import './EditDataModal.css'
 import { useState, useEffect } from 'react'
-
 import Edit from '../../assets/images/edit-04-dark.svg'
 import { updateModelRow, getAllModelData } from '../../features/model/handleRequests'
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllModelDataSpecify } from '../../features/model/handleRequests';
-
+import PrimaryLoading from "../PrimaryLoading/PrimaryLoading"
 
 const EditDataModal = ({ rowId, modelName, currentRowData, modelFields }) => {
 
@@ -49,9 +48,6 @@ const EditDataModal = ({ rowId, modelName, currentRowData, modelFields }) => {
                 console.error("Failed to fetch model data:", error);
             });
 
-
-
-
     }, [modelFields, dispatch, currentRowData, formData]);
 
 
@@ -77,9 +73,9 @@ const EditDataModal = ({ rowId, modelName, currentRowData, modelFields }) => {
         //     console.log(`${key}: ${value}`);
         // }
 
-        for (let [key, value] of formData.entries()) {
-            console.log(`${key}: ${value}`);
-        }
+        // for (let [key, value] of formData.entries()) {
+        //     console.log(`${key}: ${value}`);
+        // }
 
         dispatch(updateModelRow({ modelName, rowId, rowData: formData })).unwrap().then(
             () => {
@@ -151,7 +147,7 @@ const EditDataModal = ({ rowId, modelName, currentRowData, modelFields }) => {
 
 
                                         </li>
-                                    ) : <div className="loading">loading ...</div>
+                                    ) : <PrimaryLoading/>
                                     }
                                     {/* {Object.keys(rowData).slice(1).map((item, index) =>
                                         <li key={index}>

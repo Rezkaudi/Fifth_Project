@@ -1,0 +1,103 @@
+.ProjectSidebar {
+    scrollbar-width: thin;
+    @apply
+    /* sm */
+    bg-c1 w-0 h-full text-c2 transition-[width] duration-1000 absolute overflow-y-auto overflow-x-hidden pt-5
+    /* md */
+    lg:w-48 lg:relative scroll-m-2 
+}
+
+.ProjectSidebar.active {
+    @apply w-48 z-30
+}
+.ProjectSidebar.unActive {
+    @apply w-0 z-20
+}
+.ProjectSidebar .projectsTop {
+    @apply flex items-center justify-start mb-10
+}
+
+.ProjectSidebar .projectsTop .search {
+    @apply absolute top-5 right-0 bg-cover bg-no-repeat flex items-center flex-row-reverse w-40 h-7
+}
+
+.ProjectSidebar .projectsTop .search img {
+    @apply w-4 h-4 bg-cover mx-3 bg-no-repeat cursor-pointer
+}
+
+.ProjectSidebar .projectsTop .search input {
+    @apply w-0 outline-none transition-[width] rounded text-c1 p-0
+}
+
+.ProjectSidebar .projectsTop .search input.activeSearch {
+    @apply w-24 outline-none p-1 border border-c1
+}
+
+
+.ProjectSidebar .projects {
+    @apply ml-1
+}
+
+.ProjectSidebar .projects .project {
+    @apply flex items-center justify-start flex-col my-1 mb-2 rounded-l relative
+}
+
+.ProjectSidebar .projects .project .projectContainer {
+    @apply flex items-center justify-between rounded-l w-full h-12 pr-3 hover:bg-c4
+}
+
+.projectContainer.active {
+    @apply bg-c4
+}
+
+.ProjectSidebar .projects .project .projectName {
+    /* @apply [&:before]:inline-block [&:before]:content-[""] [&:before]:w-2 [&:before]:h-2 [&:before]:rounded-full [&:before]:bg-c2 [&:before]:mx-3 */
+}
+
+.ProjectSidebar .projects .project .drobDown {
+    @apply h-0 overflow-hidden w-full
+}
+
+.ProjectSidebar .projects .project .drobDown.active {
+    @apply h-fit
+}
+
+.ProjectSidebar .projects .project .drobDown .models {
+    @apply ml-5
+}
+
+.ProjectSidebar .projects .project .drobDown .models .model {
+    @apply hover:bg-c4 my-1 py-2 pl-2 rounded-l [&>a:before]:inline-block [&>a:before]:content-[""] [&>a:before]:w-2 [&>a:before]:h-2 [&>a:before]:rounded-full [&>a:before]:bg-c2 [&>a:before]:mx-3
+}
+.ProjectSidebar .projects .project .drobDown .models .model.active{
+    @apply bg-c4
+}
+
+.ProjectSidebar .projects .project .drobDown .models .model a {
+    @apply w-full h-full block
+}
+
+.ProjectSidebar .arrow {
+    @apply cursor-pointer hover:text-c1 
+}
+
+.ProjectSidebar .del img{
+    @apply cursor-pointer w-6 h-6 pl-2                                                                                             
+
+}
+
+.ProjectSidebar ~ .menuBtn {
+    @apply absolute top-[70vh] -left-1 lg:left-[230px] w-10 h-10 z-50 text-c1 font-bold text-4xl bg-c4 rounded-full cursor-pointer transition-all rotate-0 duration-1000 flex items-center justify-center
+}
+
+.ProjectSidebar ~ .menuBtn span {
+    @apply block mb-1
+}
+
+.ProjectSidebar ~ .menuBtn.active {
+    @apply left-[430px] bg-c4 text-c1 rotate-[405deg] 
+}
+
+.ProjectSidebar ~ .menuBtn.unActive {
+    @apply -left-1 bg-c4 text-c1 rotate-0
+}

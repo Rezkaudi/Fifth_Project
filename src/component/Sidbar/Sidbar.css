@@ -4,12 +4,16 @@
     /* sm */
     bg-c2 w-0 h-[calc(100vh-8px)] text-c4 transition-[width] duration-1000 absolute overflow-y-auto rounded mr-3 overflow-x-hidden
     /* md */
-    lg:w-0 lg:relative scroll-m-2
+    lg:w-60 lg:relative scroll-m-2 z-30
 }
 
 
+.sidebar.unActive {
+    @apply w-0
+}
+
 .sidebar.active {
-    @apply w-64
+    @apply w-60
 }
 
 .sidebar .logo {
@@ -32,11 +36,11 @@
 }
 
 .sidebar .sidebar-items .projects .search {
-    @apply absolute top-0 right-2 bg-cover bg-no-repeat flex items-center flex-row-reverse w-40 h-7
+    @apply absolute top-4 right-2 bg-cover bg-no-repeat flex items-center flex-row-reverse w-20 h-7
 }
 
 .sidebar .sidebar-items .projects .search img {
-    @apply w-4 h-4 bg-cover mx-3 bg-no-repeat cursor-pointer
+    @apply w-4 h-4 bg-cover mx-1 bg-no-repeat cursor-pointer
 }
 
 .sidebar .sidebar-items .projects .search input {
@@ -44,7 +48,7 @@
 }
 
 .sidebar .sidebar-items .projects .search input.activeSearch {
-    @apply w-32 outline-none p-1 border border-c1
+    @apply w-24 outline-none p-1 border border-c1
 }
 
 .sidebar .sidebar-items .projects ul,
@@ -140,16 +144,20 @@
 }
 
 
-.menuBtn {
-    @apply absolute top-[75vh] -left-1 w-10 h-10 z-10 text-c1 font-bold text-4xl bg-c4 rounded-full cursor-pointer transition-all rotate-0 duration-1000 flex items-center justify-center
+.sidebar ~ .menuBtn {
+    @apply absolute top-[76vh] -left-1 lg:left-[230px] w-10 h-10 z-50 text-c4 font-bold text-4xl bg-c1 rounded-full cursor-pointer transition-all rotate-0 duration-1000 flex items-center justify-center
 }
 
-.menuBtn span {
+.sidebar ~ .menuBtn span {
     @apply block mb-1
 }
 
-.menuBtn.active {
-    @apply left-[239px] lg:left-[246px] bg-c1 text-c4 rotate-[405deg]
+.sidebar ~ .menuBtn.active {
+    @apply left-[230px] bg-c1 text-c4 rotate-[405deg]
+}
+
+.sidebar ~ .menuBtn.unActive {
+    @apply -left-1 bg-c1 text-c4 rotate-0
 }
 
 /* sm */

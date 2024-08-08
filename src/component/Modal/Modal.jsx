@@ -14,7 +14,8 @@ const Modal = ({ content }) => {
         <>
             <button onClick={handelShowModal}>{content}</button>
             {showModal &&
-                <div className='modalContainer'>
+                <div className="mainModal">
+                    <div className='modalContainer'>
                     <div className="content">
                         <div className="contentContainer">
                             {/*header*/}
@@ -33,6 +34,7 @@ const Modal = ({ content }) => {
                         </div>
                     </div>
                     <div className="opacity-50 fixed inset-0 z-40 bg-black"></div>
+                </div>
                 </div>
             }
         </>

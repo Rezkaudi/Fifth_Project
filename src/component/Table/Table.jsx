@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import Pagination from "../Pagination/Pagination";
 import './Table.css'
-
-import EditDataModal from "../EditDataModal/EditDataModal";
 import DeleteDataModal from "../DeleteDataModal/DeleteDataModal";
 import { useSelector } from "react-redux";
+import PrimaryLoading from "../PrimaryLoading/PrimaryLoading"
+import Edit from "../../assets/images/edit-04-dark.svg"
+import { Link } from "react-router-dom";
+import Eye from "../../assets/images/icon _eye.svg"
 
-const Table = ({ modelName }) => {
+const Table = ({ modelName, projectName }) => {
 
     const { modelData, modelFields } = useSelector((state) => state.model)
 
@@ -21,58 +23,85 @@ const Table = ({ modelName }) => {
         console.log("modelFields", modelFields);
     }, [modelFields, modelData])
     return (
-        <div className="modelTableData">
-            <div className="tableContainer">
-                {modelFields && modelData ?
-                    <table>
-                        <thead>
-                            <tr>
-                                <th scope="col" className="relative px-2 py-1 border-r border-c2">
-                                    <span className="sr-only">index</span>
-                                </th>
-                                {modelFields.map((item, index) =>
-                                    <th key={index} scope="col" className="col">
-                                        {item.name}
-                                    </th>
-                                )}
-                                <th scope="col" className="relative px-6 py-1">
-                                    <span className="sr-only">Edit</span>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {modelData?.length === 0 ?
+        <div className="mainTable">
+            <div className="modelTableData">
+                <div className="tableContainer ">
+                    {modelFields && modelData ?
+                        <table>
+                            <thead>
                                 <tr>
-                                    <td colSpan={modelFields?.length + 2} className="cell text-center">no data</td>
+                                    <th scope="col" className="relative px-2 py-1 border-r border-c2">
+                                        <span className="sr-only">index</span>
+                                    </th>
+                                    {modelFields.slice(0, 4).map((item, index) =>
+                                        <th key={index} scope="col" className="col max-w-40 truncate">
+                                            {item.name}
+                                        </th>
+                                    )}
+                                    {
+                                        modelFields.length > 4 &&
+                                        <th scope="col" className="relative px-6 py-1">
+                                            <span className="text-xs font-extralight">+{modelFields.length - 4} More fields ...</span>
+                                        </th>
+                                    }
+                                    <th scope="col" className="relative px-6 py-1">
+                                        <span className="sr-only">Edit</span>
+                                    </th>
                                 </tr>
-                                : currentItems.map((item, index) => (
-                                    <tr key={index}>
-                                        <td className="index">{index + 1}</td>
-
-                                        {Object.keys(item).map((prob, index) =>
-                                            <td key={index} className="cell max-w-20 overflow-x-hidden break-words">
-
-                                                {modelFields[index].type==="BLOB" ?
-                                                    <img className="max-w-12" src={item[prob]} alt="img" />
-                                                    :
-                                                    <span>{item[prob]}</span>
-                                                }
-                                            </td>
-                                        )}
-
-                                        <td className="cell cellBtn">
-                                            <EditDataModal rowId={item.id} modelName={modelName} currentRowData={item} modelFields={modelFields} />
-                                            <DeleteDataModal rowId={item.id} modelName={modelName} />
-                                        </td>
+                            </thead>
+                            <tbody>
+                                {modelData?.length === 0 ?
+                                    <tr>
+                                        <td colSpan={modelFields?.length + 2} className="cell text-center">no data</td>
                                     </tr>
-                                ))}
-                        </tbody>
-                    </table>
-                    : <div className="loading">loading ...</div>
-                }
-            </div>
+                                    : currentItems.map((item, index) => (
+                                        <tr key={index}>
+                                            <td className="index">{index + 1}</td>
 
-            <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} />
+                                            {Object.keys(item).slice(0, 4).map((prob, index) =>
+                                                <td key={index} className="cell max-w-48 truncate">
+
+                                                    {modelFields[index].type === "BLOB" ?
+                                                        <img className="max-w-12" src={item[prob]} alt="img" />
+                                                        :
+                                                        <span>{item[prob]}</span>
+                                                    }
+                                                </td>
+                                            )}
+                                            {
+                                                modelFields.length > 4 &&
+                                                <td className="relative px-6 py-1 text-center">
+                                                    <span className="text-sm text-center font-normal">...</span>
+                                                </td>
+                                            }
+                                            <td className="cell w-20">
+
+                                                <Link to={`/account/${projectName}/${modelName}/showRow/${item.id}`}>
+                                                    <button className='tableBtn' title="show data">
+                                                        <img src={Eye} alt="show data" />
+                                                    </button>
+                                                </Link>
+
+
+                                                <Link to={`/account/${projectName}/${modelName}/editRow/${item.id}`}>
+                                                    <button className='tableBtn' title="edit">
+                                                        <img src={Edit} alt="edit" />
+                                                    </button>
+                                                </Link>
+
+                                                {/* <EditDataModal rowId={item.id} modelName={modelName} currentRowData={item} modelFields={modelFields} /> */}
+                                                <DeleteDataModal rowId={item.id} modelName={modelName} />
+                                            </td>
+                                        </tr>
+                                    ))}
+                            </tbody>
+                        </table>
+                        : <PrimaryLoading />
+                    }
+                </div>
+
+                <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} />
+            </div>
         </div>
     );
 };

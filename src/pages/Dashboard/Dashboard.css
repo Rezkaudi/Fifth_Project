@@ -4,7 +4,7 @@
 }
 
 .dasboard .default{
-    @apply bg-c4 rounded w-full
+    @apply bg-c4 rounded flex-1
     h-full 
 }
 

@@ -1,32 +1,16 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useEffect, useState,useCallback } from 'react'
-
+import { isActiveLink } from '../../utils'
 import './SideBarItems.css'
 
 
 const SideBarModel = ({ to, modelName }) => {
 
-    // const [activeDelModel, setActiveDelModel] = useState(false)
-    const [activeModel, setActiveModel] = useState(false)
     const location = useLocation()
 
-
-    const handleActiveModel = useCallback(() => {
-        if (location.pathname.includes(to)) {
-            setActiveModel(true);
-        } else {
-            setActiveModel(false);
-        }
-    }, [location, to]);
-
-    useEffect(() => {
-        handleActiveModel()
-    }, [handleActiveModel])
-
     return (
-        <li className={activeModel ? "model active" : "model"}>
-            <Link to={to} onClick={handleActiveModel}>{modelName}</Link>
-            {/* <i className='trash' onClick={() => { handleActiveDelModel(modelName) }}></i> */}
+        <li className={isActiveLink(location,to) ? "model active" : "model"}>
+            <Link to={to}>{modelName}</Link>
         </li>
     )
 }

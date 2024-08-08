@@ -21,7 +21,7 @@ export const projectSlice = createSlice({
       })
       .addCase(getProjectModels.fulfilled, (state, { payload }) => {
         state.projectModels = payload;
-        toast.success(payload.message);
+        // toast.success(payload.message);
       })
       .addCase(getProjectModels.rejected, (state, { payload }) => {
         toast.error(payload);

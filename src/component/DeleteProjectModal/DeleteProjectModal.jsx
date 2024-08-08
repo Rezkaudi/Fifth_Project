@@ -13,12 +13,14 @@ const DeleteProjectModal = ({ projectId, projectName }) => {
 
     const dispatch = useDispatch()
 
-    const handelShowModal = () => {
+    const handelShowModal = (e) => {
+        e?.stopPropagation()
         setShowModal(pre => !pre)
     }
 
-    const handleDelete = async () => {
-        console.log("delete", projectId);
+    const handleDelete = (e) => {
+        // console.log("delete", projectId);
+        e?.stopPropagation()
 
         dispatch(deleteProject(projectId)).unwrap().then(
             () => {
@@ -33,22 +35,24 @@ const DeleteProjectModal = ({ projectId, projectName }) => {
 
     return (
         <>
-            <span className="del" onClick={handelShowModal} title="delete">
+            <span className="del cursor-pointer w-7 h-7 p-1 z-40 hover:border border-c1 rounded flex items-center justify-center" onClick={handelShowModal} title="delete">
                 <img src={DeleteImage} alt="del" />
             </span>
             {showModal &&
-                <div className='deleteModalContainer'>
+                <div className='deleteModalContainer' onClick={(e)=>e.stopPropagation()}>
                     <div className="content">
                         <div className="contentContainer">
                             {/*header*/}
-                            <div className="modelHeader">
-                                <h3>Do you need to delete  {projectName} project</h3>
+                            <div className="modelHeader1">
+                                <img src={DeleteImage} alt="delete" />
+                                <h3>Delete {projectName} project </h3>
+                                <p>Are you sure you would like to do this ? </p>
                             </div>
                             {/*footer*/}
-                            <div className="modelFooter">
-                                <button className="close" disabled={loading} onClick={handelShowModal}>No</button>
+                            <div className="modelFooter1">
+                                <button className="close" disabled={loading} onClick={handelShowModal}>Cancle</button>
                                 <button className="save" disabled={loading} onClick={handleDelete}>
-                                    Yes
+                                    Confirm
                                     {loading && (
                                         <span
                                             className="animate-spin h-5 ml-2 w-5 border-t-2 border-b-2 border-c4 rounded-full inline-block"

@@ -134,7 +134,30 @@ export const updateProject = createAsyncThunk(
     }
   }
 );
+export const deleteProjectModel = createAsyncThunk(
+  "projects/deleteProjectModel",
+  async (modelName, { rejectWithValue }) => {
+    const userToken = localStorage.getItem("userToken");
 
+    try {
+      const response = await fetch(`${Api}/delete/${modelName}/`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Token ${userToken}`,
+        },
+      });
+      // const data = await response.json();
+
+      if (response.ok) {
+        return {modelName };
+      } else {
+        return rejectWithValue("error");
+      }
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
 // function formDataToObject(formData) {
 //   const obj = {};
 //   formData.forEach((value, key) => obj[key] = value);
