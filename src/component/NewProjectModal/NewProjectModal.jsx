@@ -1,7 +1,7 @@
 import './NewProjectModal.css'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { creatProject } from '../../features/allProjects/handleRequests';
+import { creatProject, getAllUserProjects } from '../../features/allProjects/handleRequests';
 
 const NewProjectModal = () => {
 
@@ -10,12 +10,14 @@ const NewProjectModal = () => {
     const [name, setProjectName] = useState("");
     const { loading } = useSelector((state) => state.allProjects);
 
-
+    function replaceSpacesWithUnderscores(str) {
+        return str.replace(/\s+/g, '_');
+    }
 
     const handelShowModal = () => {
         setShowModal(pre => !pre)
     }
-    
+
     const handleChange = (e) => {
         setProjectName(e.target.value)
     }
@@ -23,12 +25,13 @@ const NewProjectModal = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const formData = new FormData()
-        formData.append("name", name)
+        formData.append("name", replaceSpacesWithUnderscores(name))
         console.log(formData);
 
         dispatch(creatProject(formData)).unwrap().then(
             () => {
                 handelShowModal()
+                dispatch(getAllUserProjects())
                 setProjectName("")
             },
             (error) => {
@@ -53,7 +56,7 @@ const NewProjectModal = () => {
                             <div className="modelHeader ">
                                 <h3>Create new project</h3>
                             </div>
-                            <hr className='bg-slate-500 h-[2px] mx-5'/>
+                            <hr className='bg-slate-500 h-[2px] mx-5' />
                             {/*body*/}
                             <div className="modelBody h-[250px]">
                                 <label className='block ml-2 mb-2' htmlFor="name">Enter Project Name :</label>

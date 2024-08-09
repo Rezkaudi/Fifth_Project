@@ -1,11 +1,12 @@
 
 .ProjectSidebar .projects .model,
 .ProjectSidebar .plugins ul li {
-    @apply flex items-center justify-start my-1 h-12 hover:bg-c1 rounded-l relative overflow-hidden
+    overflow: hidden !important;
+    @apply flex items-center justify-start my-1 h-12 hover:bg-white rounded-l relative overflow-hidden
 }
 
 .ProjectSidebar .projects .model a{
-    @apply w-full overflow-auto
+    @apply w-full overflow-hidden 
 }
 
 .ProjectSidebar .projects .model {

@@ -9,8 +9,8 @@ const SideBarModel = ({ to, modelName }) => {
     const location = useLocation()
 
     return (
-        <li className={isActiveLink(location,to) ? "model active" : "model"}>
-            <Link to={to}>{modelName}</Link>
+        <li title={modelName} className={isActiveLink(location,to) ? "model active overflow-hidden" : "model overflow-hidden"}>
+            <Link className='truncate overflow-hidden' to={to}>{modelName}</Link>
         </li>
     )
 }

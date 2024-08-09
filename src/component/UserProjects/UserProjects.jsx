@@ -17,8 +17,8 @@ const UserProjects = ({projectName }) => {
 
     return (
         <li className="project">
-            <div className={isActiveLink(location,`/account/${projectName}`) ? 'projectContainer active' : 'projectContainer'}>
-                <Link className='projectName' to={`/account/${projectName}`} >{projectName}</Link>
+            <div title={projectName} className={isActiveLink(location,`/account/${projectName}`) ? 'projectContainer active' : 'projectContainer'}>
+                <Link className='truncate' to={`/account/${projectName}`} >{projectName}</Link>
             </div>
         </li>
     )

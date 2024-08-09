@@ -31,8 +31,8 @@ export const allProjectsSlice = createSlice({
         state.loading = true;
       })
       .addCase(creatProject.fulfilled, (state, { payload }) => {
-        state.userProjects = [...state.userProjects, payload];
-        console.log(state.userProjects);
+        // state.userProjects = [...state.userProjects, payload];
+        // console.log(state.userProjects);
         state.loading = false;
         toast.success("successful creatProject");
       })
@@ -45,6 +45,7 @@ export const allProjectsSlice = createSlice({
     builder
       .addCase(getAllUserProjects.pending, (state, { payload }) => {
         state.loading = true;
+        state.userProjects = null;
       })
       .addCase(getAllUserProjects.fulfilled, (state, { payload }) => {
         state.loading = false;
