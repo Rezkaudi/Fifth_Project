@@ -1,22 +1,17 @@
 import './DashModelHeader.css'
-// import Copy from '../../assets/images/copy-duplicate-c2.svg'
-import DeleteModelModal from '../DeleteModelModal/DeleteModelModal'
+import { Link } from "react-router-dom";
 
-const DashModelHeader = ({ path, modelName }) => {
+const DashModelHeader = ({ modelName }) => {
     return (
         <header className='dashModelHeader'>
             <div className="left">
                 <span className="modelName">{modelName}</span>
-
-                <DeleteModelModal modelName={modelName} />
-                {/* <button title='copy url'>
-                    <img src={Copy} alt="copy" />
-                </button> */}
-                <div className="path">{path}</div>
             </div>
-            {/* <div className="right">
-                <button>Save</button>
-            </div> */}
+            <div className="right">
+                <Link to="/account/schema">
+                    <button>Schema</button>
+                </Link>
+            </div>
         </header>
 
     )

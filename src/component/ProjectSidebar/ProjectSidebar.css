@@ -4,7 +4,7 @@
     /* sm */
     bg-c1 w-0 h-full text-c2 transition-[width] duration-1000 absolute overflow-y-auto overflow-x-hidden pt-5
     /* md */
-    lg:w-48 lg:relative scroll-m-2 
+    lg:w-48 lg:relative scroll-m-2 hidden lg:block
 }
 
 .ProjectSidebar.active {
@@ -87,7 +87,7 @@
 }
 
 .ProjectSidebar ~ .menuBtn {
-    @apply absolute top-[70vh] -left-1 lg:left-[230px] w-10 h-10 z-50 text-c1 font-bold text-4xl bg-c4 rounded-full cursor-pointer transition-all rotate-0 duration-1000 flex items-center justify-center
+    @apply hidden lg:flex  border-c2 absolute top-[69vh] -left-1 lg:left-[230px] w-10 h-10 z-40 text-c1 font-bold text-4xl bg-c4 rounded-full cursor-pointer transition-all rotate-0 duration-1000 items-center justify-center
 }
 
 .ProjectSidebar ~ .menuBtn span {
@@ -95,9 +95,9 @@
 }
 
 .ProjectSidebar ~ .menuBtn.active {
-    @apply left-[430px] bg-c4 text-c1 rotate-[405deg] 
+    @apply left-[170px] bg-c4 text-c1 rotate-[405deg] 
 }
 
 .ProjectSidebar ~ .menuBtn.unActive {
-    @apply -left-1 bg-c4 text-c1 rotate-0
+    @apply left-[-26px] bg-c1 text-c4 rotate-0 
 }

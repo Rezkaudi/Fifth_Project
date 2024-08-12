@@ -26,9 +26,9 @@
 
 .feildModalContainer .contentContainer .modelFooter3 .close {
     background-color: white !important;
-    @apply text-[#777]  bg-transparent font-bold px-6 py-3 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150
+    @apply text-[#777] bg-transparent font-bold px-3 py-2 lg:px-6 lg:py-3 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150
 }
 
 .feildModalContainer .contentContainer .modelFooter3 .save {
-    @apply flex items-center justify-center bg-c2 text-white active:bg-c2 font-bold text-xs px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150
+    @apply px-3 py-2 lg:px-6 flex items-center justify-center bg-c2 text-white active:bg-c2 font-bold text-xs rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150
 }

@@ -3,7 +3,6 @@
 }
 
 .projectDash .default {
-
     overflow-y: auto !important;
     @apply bg-c4 rounded flex-1 h-full
 }

@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 
 const initialState = {
   userModels: null,
+  filteredUserModels: null,
   stateOfCreate: false,
   loading: false,
 };
@@ -19,6 +20,15 @@ export const allModelsSlice = createSlice({
         return item.projectid === payload.projectid;
       });
       return projectModels;
+    },
+    filterModelsByProjectName: (state, { payload }) => {
+      if (payload === "all") {
+        state.filteredUserModels = state.userModels;
+      } else {
+        state.filteredUserModels = state.userModels?.filter((item) => {
+          return item.project === parseInt(payload);
+        });
+      }
     },
   },
   extraReducers: (builder) => {
@@ -41,10 +51,12 @@ export const allModelsSlice = createSlice({
     builder
       .addCase(getAllUserModels.pending, (state, { payload }) => {
         state.userModels = null;
+        state.filteredUserModels = null;
       })
       .addCase(getAllUserModels.fulfilled, (state, { payload }) => {
         state.userModels = payload;
-        console.log(payload);
+        state.filteredUserModels = payload;
+        // console.log(payload);
         // toast.success("successful getAllUserModels");
       })
       .addCase(getAllUserModels.rejected, (state, { payload }) => {
@@ -62,6 +74,8 @@ export const allModelsSlice = createSlice({
         state.userModels = state.userModels.filter((item) => {
           return item.modelname !== payload.modelName;
         });
+        state.filteredUserModels = state.userModels;
+
         toast.success("successful deleteModel");
       })
       .addCase(deleteModel.rejected, (state, { payload }) => {
@@ -71,5 +85,6 @@ export const allModelsSlice = createSlice({
   },
 });
 
-export const { getAllProjectModels } = allModelsSlice.actions;
+export const { getAllProjectModels, filterModelsByProjectName } =
+  allModelsSlice.actions;
 export default allModelsSlice.reducer;

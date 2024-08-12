@@ -44,10 +44,10 @@ const ProjectsTable = () => {
                                         <tr key={index} onClick={() => navigate(`/account/${item.name}`)}>
                                             <td className="cursor-pointer index">{index + 1}</td>
 
-                                            <td className="cursor-pointer cell max-w-20 overflow-x-hidden break-words">
+                                            <td className="cursor-pointer cell max-w-20 overflow-x-hidden truncate">
                                                 <span>{item.id}</span>
                                             </td>
-                                            <td className="cursor-pointer cell max-w-20 overflow-x-hidden break-words">
+                                            <td className="cursor-pointer cell max-w-20 overflow-x-hidden truncate">
                                                 <span>{item.name}</span>
                                             </td>
                                             <td name="delete" className="cell cellBtn">

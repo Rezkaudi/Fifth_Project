@@ -16,6 +16,7 @@ export const getAllModelData = createAsyncThunk(
         },
       });
       const data = await response.json();
+      console.log(data)
       if (response.ok) {
         return data;
       } else {
@@ -125,7 +126,7 @@ export const updateModelRow = createAsyncThunk(
         return { rowId, rowData };
       } else {
         const data = await response.json();
-        console.log(data);
+        console.log("ghith",data);
 
         return rejectWithValue(data.Error);
       }

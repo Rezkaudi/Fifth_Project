@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom'
 import { getProjectModels } from '../../features/allProjects/handleRequests'
 import PrimaryLoading from '../PrimaryLoading/PrimaryLoading'
 import { SideBarModel } from '../SideBarItems/SideBarItems'
+import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
 const ProjectSidebar = () => {
@@ -17,23 +18,38 @@ const ProjectSidebar = () => {
     const [projectId, setProjectId] = useState(null)
     const { projectName } = useParams()
     const [activeSideBare, setActiveSideBare] = useState(true)
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        setActiveSearch(false)
+        if (window.innerWidth >= 1024) setActiveSideBare(true)
+        else setActiveSideBare(false)
+    }, [])
 
     useEffect(() => {
         const getProjectId = (projectName) => {
-            let pId = userProjects?.find((item) => {
+            let pId = userProjects.find((item) => {
                 return item.name === projectName;
             });
-            let pi = pId?.id
-            return pi
+            if (pId) {
+                let pi = pId.id
+                return pi
+            }
+            navigate("/notfound")
+
         }
-        setProjectId(getProjectId(projectName))
-    }, [projectName, userProjects])
+        if (userProjects) {
+            setProjectId(getProjectId(projectName))
+        }
+
+    }, [projectName, userProjects,navigate])
 
     useEffect(() => {
         if (projectId) {
             dispatch(getProjectModels(projectId))
         }
-    }, [projectId, dispatch])
+
+    }, [projectId, dispatch, userProjects])
 
     const handelActiceSearch = () => {
         setActiveSearch(pre => !pre)
@@ -44,7 +60,7 @@ const ProjectSidebar = () => {
     }
 
     return (
-        <>
+        <div className='h-full z-auto relative'>
             <aside className={activeSideBare ? "ProjectSidebar active" : "ProjectSidebar unActive"}>
                 <div className="projectsTop">
                     <Link className='z-10' to={`/account/${projectName}`}>
@@ -73,7 +89,7 @@ const ProjectSidebar = () => {
             <div className={activeSideBare ? "menuBtn active" : "menuBtn unActive"} onClick={handleActiveSideBare}>
                 <span>+</span>
             </div>
-        </>
+        </div>
     )
 }
 

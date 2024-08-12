@@ -10,6 +10,8 @@ import { getAllUserProjects } from '../../features/allProjects/handleRequests'
 import { getAllUserModels } from '../../features/allModels/handleRequests'
 import { getUserTokens } from '../../features/user/handleRequests'
 import { useLocation } from 'react-router-dom'
+import MobileSidebar from '../../component/MobileSidebar/MobileSidebar'
+
 const Account = () => {
     const dispatch = useDispatch()
     const location = useLocation()
@@ -35,16 +37,17 @@ const Account = () => {
     useEffect(() => {
         console.log(location.pathname);
     }, [location])
-    
+
     return (
-        <div className="account">
+        <div className="account relative">
+            <MobileSidebar/>
             <Sidbar />
-            <div className="bg-c4 rounded flex-1 h-full">
+            <div className="w-full rounded h-full bg-c4">
                 {location.pathname === "/account" ?
-                    <div className='px-5'>
+                    <div className='pt-4 px-2 lg:px-5'>
                         <header className='modelHeader '>
                             <div className="left">
-                                <span className="modelName">{"All Projects"}</span>
+                                <span className="modelName">All Projects</span>
                                 {/* <div className="path">{path}</div> */}
                             </div>
                             <div className="right ">
@@ -55,7 +58,6 @@ const Account = () => {
                     </div> :
                     <Outlet />
                 }
-
             </div>
         </div>
     )

@@ -31,6 +31,7 @@ const ModelsTable = ({ projectName }) => {
                                 <th scope="col" className="relative px-6 py-1">
                                     <span className="sr-only">Edit</span>
                                 </th>
+                                
                             </tr>
                         </thead>
                         <tbody>

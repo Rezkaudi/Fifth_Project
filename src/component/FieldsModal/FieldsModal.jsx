@@ -7,6 +7,7 @@ import { creatModel } from '../../features/allModels/handleRequests'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProjectModels } from '../../features/allProjects/handleRequests'
 import { toast } from 'react-toastify';
+import { getAllUserModels } from '../../features/allModels/handleRequests'
 
 
 const FieldsModal = ({ hidden, modelName, projectName }) => {
@@ -98,6 +99,7 @@ const FieldsModal = ({ hidden, modelName, projectName }) => {
             () => {
                 // dispatch(getAllUserModels());
                 dispatch(getProjectModels(projectId))
+                dispatch(getAllUserModels())
                 handelCloseAll()
             },
             (error) => {
@@ -126,7 +128,7 @@ const FieldsModal = ({ hidden, modelName, projectName }) => {
                                 <FieldsTable fields={fields} onDelete={handleDeleteField} />
                             </div>
                             {/*footer*/}
-                            <div className="modelFooter3 rounded flex items-center justify-between p-6 bg-[#ccc]">
+                            <div className="modelFooter3 rounded flex items-center justify-between p-2 lg:p-6 bg-[#ccc] flex-wrap-reverse">
                                 <button className="close" onClick={() => setShowModal(false)} disabled={loading}>Back</button>
                                 <div className='flex items-center justify-center gap-2'>
                                 <AddFieldModal fields={fields} setFields={setFields} userProjectModels={userProjectModels} />

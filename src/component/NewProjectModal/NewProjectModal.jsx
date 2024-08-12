@@ -45,7 +45,7 @@ const NewProjectModal = () => {
 
     return (
         <>
-            <button className="createNew" onClick={handelShowModal}>
+            <button className="text-xs whitespace-nowrap p-0" onClick={handelShowModal}>
                 + create new project
             </button>
             {showModal &&

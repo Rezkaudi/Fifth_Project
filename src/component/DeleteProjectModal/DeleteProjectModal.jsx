@@ -43,7 +43,7 @@ const DeleteProjectModal = ({ projectId, projectName }) => {
                     <div className="content">
                         <div className="contentContainer">
                             {/*header*/}
-                            <div className="modelHeader1">
+                            <div className="modelHeader1 text-center">
                                 <img src={DeleteImage} alt="delete" />
                                 <h3>Delete {projectName} project </h3>
                                 <p>Are you sure you would like to do this ? </p>

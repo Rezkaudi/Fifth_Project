@@ -76,10 +76,8 @@ const App = () => {
                 </Route>
               </Route>
 
-              <Route path='dashboard' element={<Dashboard />}>
-                <Route path=':projectName' element={<DashProject />}>
+              <Route path='schema' element={<Dashboard />}>
                   <Route path=':modelName' element={<DashModel />} />
-                </Route>
               </Route>
 
               <Route path='tokens' element={<Tokens />} />

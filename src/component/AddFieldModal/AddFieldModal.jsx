@@ -1,7 +1,13 @@
 import { toast } from 'react-toastify';
 import './AddFieldModal.css'
 import { useState } from 'react'
-import text from "../../assets/images/string.svg"
+
+import int from "../../assets/types/int.svg"
+import image from "../../assets/types/image.svg"
+import real from "../../assets/types/real.svg"
+import fk from "../../assets/types/fk.svg"
+import string from "../../assets/types/string.svg"
+import bool from "../../assets/types/bool.svg"
 
 
 const AddFieldModal = ({ fields, setFields, userProjectModels }) => {
@@ -146,7 +152,7 @@ const AddFieldModal = ({ fields, setFields, userProjectModels }) => {
                                         <div className="types grid grid-cols-1 md:grid-cols-2 gap-2">
                                             <label className='flex items-center justify-between p-3 gap-4 mx-2'>
                                                 <span className="w-8 ">
-                                                    <img src={text} alt="text" />
+                                                    <img src={int} alt="text" />
                                                 </span>
                                                 <span className="flex-1">
                                                     <h5 className="text-xs">INTEGER</h5>
@@ -158,7 +164,7 @@ const AddFieldModal = ({ fields, setFields, userProjectModels }) => {
                                             </label>
                                             <label className='flex items-center justify-between p-3 gap-4 mx-2'>
                                                 <span className="w-8 ">
-                                                    <img src={text} alt="text" />
+                                                    <img src={real} alt="text" />
                                                 </span>
                                                 <span className="flex-1">
                                                     <h5 className="text-xs">REAL</h5>
@@ -170,7 +176,7 @@ const AddFieldModal = ({ fields, setFields, userProjectModels }) => {
                                             </label>
                                             <label className='flex items-center justify-between p-3 gap-4 mx-2'>
                                                 <span className="w-8 ">
-                                                    <img src={text} alt="text" />
+                                                    <img src={string} alt="text" />
                                                 </span>
                                                 <span className="flex-1">
                                                     <h5 className="text-xs">TEXT</h5>
@@ -182,7 +188,7 @@ const AddFieldModal = ({ fields, setFields, userProjectModels }) => {
                                             </label>
                                             <label className='flex items-center justify-between p-3 gap-4 mx-2'>
                                                 <span className="w-8 ">
-                                                    <img src={text} alt="text" />
+                                                    <img src={image} alt="text" />
                                                 </span>
                                                 <span className="flex-1">
                                                     <h5 className="text-xs">IMAGE</h5>
@@ -195,7 +201,7 @@ const AddFieldModal = ({ fields, setFields, userProjectModels }) => {
                                             {userProjectModels.length !== 0 &&
                                                 <label className='flex items-center justify-between p-3 gap-4 mx-2'>
                                                     <span className="w-8 ">
-                                                        <img src={text} alt="text" />
+                                                        <img src={fk} alt="text" />
                                                     </span>
                                                     <span className="flex-1">
                                                         <h5 className="text-xs">FOREIGNKEY</h5>
@@ -217,6 +223,9 @@ const AddFieldModal = ({ fields, setFields, userProjectModels }) => {
                                             {field["datatype"] !== "FOREIGNKEY" &&
                                                 <>
                                                     <label className='flex items-center justify-between p-3 gap-4 mx-2'>
+                                                        <span className="w-8 ">
+                                                            <img src={bool} alt="text" />
+                                                        </span>
                                                         <span className="flex-1">
                                                             <h5 className="text-xs">null</h5>
                                                             <p className="text-[7px]">If feild maybe null or no</p>
@@ -233,6 +242,9 @@ const AddFieldModal = ({ fields, setFields, userProjectModels }) => {
                                                     </label>
 
                                                     <label className='flex items-center justify-between p-3 gap-4 mx-2'>
+                                                        <span className="w-8 ">
+                                                            <img src={bool} alt="text" />
+                                                        </span>
                                                         <span className="flex-1">
                                                             <h5 className="text-xs">is unique</h5>
                                                             <p className="text-[7px]">If field is unique or no</p>

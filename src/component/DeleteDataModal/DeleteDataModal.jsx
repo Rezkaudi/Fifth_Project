@@ -39,7 +39,7 @@ const DeleteDataModal = ({ rowId, modelName }) => {
                     <div className="content">
                         <div className="contentContainer">
                             {/*header*/}
-                            <div className="modelHeader">
+                            <div className="modelHeader text-center">
                                 <img src={Delete} alt="delete" />
                                 <h3>Delete this Row </h3>
                                 <p>Are you sure you would like to do this ? </p>

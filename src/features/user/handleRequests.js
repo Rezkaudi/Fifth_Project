@@ -138,3 +138,29 @@ export const getUserTokens = createAsyncThunk(
     }
   }
 );
+
+export const refreshToken = createAsyncThunk(
+  "user/refreshToken",
+  async (tokenId, { rejectWithValue }) => {
+    const userToken = localStorage.getItem("userToken");
+
+    try {
+      const response = await fetch(`${Api}/refresh-token/${tokenId}/`, {
+        method: "POST",
+        headers: {
+          Authorization: `Token ${userToken}`,
+        },
+      });
+      const data = await response.json();
+
+      if (response.ok) {
+        return {data,tokenId};
+      } else {
+        return rejectWithValue(data.message);
+      }
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+

@@ -2,12 +2,33 @@ import './AddRowData.css'
 import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { createModelRow, getAllModelData, getAllModelDataSpecify } from '../../features/model/handleRequests';
-import { useParams,useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import PrimaryLoading from '../../component/PrimaryLoading/PrimaryLoading';
+
+import INTEGER from "../../assets/types/int.svg"
+import BLOB from "../../assets/types/image.svg"
+import REAL from "../../assets/types/real.svg"
+import FK from "../../assets/types/fk.svg"
+import TEXT from "../../assets/types/string.svg"
+
 
 const AddRowData = () => {
 
+    const types = {
+        INTEGER: INTEGER,
+        BLOB: BLOB,
+        REAL: REAL,
+        FK: FK,
+        TEXT: TEXT
+    }
+
+    const getType = (type, isKey) => {
+        if (isKey) return types.FK
+        else return types[type]
+    }
+
     const { modelName, projectName } = useParams()
-    const navigate =useNavigate()
+    const navigate = useNavigate()
     const { modelFields, loading } = useSelector((state) => state.model)
     const [relatedModel, setRelatedModel] = useState(null)
     // let formData = new FormData()
@@ -91,18 +112,18 @@ const AddRowData = () => {
     return (
         <div className="addRowDataPage">
             <div className='modalContainer'>
-                <div className="p-5">
+                <div className="p-5 mt-4">
                     <form className="contentContainer" onSubmit={handleSave}>
                         {/*header*/}
                         <div className="flex items-center justify-between">
                             <div>
-                                <h3 className='text-c2 text-2xl font-black mr-4'>Add new row of data </h3>
+                                <h3 className='text-c2 text-lg lg:text-2xl font-black mr-4'>Add new row of data </h3>
                                 <p className='text-xs font-medium ml-1 text-c2'> {projectName}/{modelName}</p>
                             </div>
 
-                            <div className="flex items-center justify-between gap-5">
-                                <button className="py-2 px-10 bg-c5 text-c1 rounded cursor-pointer text-xs" onClick={()=>navigate(`/account/${projectName}/${modelName}`)} disabled={loading}>Close</button>
-                                <button className="flex items-center justify-center py-2 px-10 bg-c1 text-c5 rounded cursor-pointer text-xs" disabled={loading}>Save Changes
+                            <div className="flex items-center justify-end lg:justify-between lg:gap-5 gap-2 flex-wrap-reverse">
+                                <button className="py-2 px-5 lg:px-10 bg-c5 text-c1 rounded cursor-pointer text-xs" onClick={() => navigate(`/account/${projectName}/${modelName}`)} disabled={loading}>Close</button>
+                                <button className="flex items-center justify-center py-2 px-5 lg:px-10 bg-c1 text-c5 rounded cursor-pointer text-xs" disabled={loading}>Save Changes
                                     {loading && (
                                         <span
                                             className="animate-spin h-5 ml-2 w-5 border-t-2 border-b-2 border-c4 rounded-full inline-block"
@@ -118,7 +139,10 @@ const AddRowData = () => {
                             <ol className='grid grid-cols-1 md:grid-cols-2 gap-5 gap-y-10'>
                                 {modelFields ? modelFields.slice(1).map((item, index) =>
                                     <li className=' space-y-2' key={index}>
-                                        <label className='text-base font-bold text-[#777]' htmlFor={item.name}>{item.name} :{item.type}  </label>
+                                        <label className='flex gap-1 text-base font-bold text-[#777]' htmlFor={item.name}>
+                                            <img src={getType(item.type, item.is_key)} alt="" />
+                                            <span>{item.name} :</span>
+                                        </label>
 
                                         {item.type === "INTEGER" && !item.is_key && <input className='h-10 bg-gray1 w-full block p-1 outline-none border border-c2 rounded' name={item.name} id={item.name} type="number" min={0} value={modelData[item.name] || ""} required onChange={handleChange} />}
                                         {item.type === "REAL" && <input className='h-10 bg-gray1 w-full block p-1 outline-none border border-c2 rounded' name={item.name} id={item.name} type="number" value={modelData[item.name] || ""} required onChange={handleChange} />}
@@ -154,7 +178,7 @@ const AddRowData = () => {
                                         {/* item["related_model"].split('_')[0] */}
 
                                     </li>
-                                ) : <div className="loading">loading ...</div>
+                                ) : <PrimaryLoading />
                                 }
                             </ol>
                         </div>

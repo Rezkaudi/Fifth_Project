@@ -58,7 +58,7 @@ export const deleteModel = createAsyncThunk(
   "models/deleteModel",
   async (modelName, { rejectWithValue }) => {
     const userToken = localStorage.getItem("userToken");
-
+console.log(modelName)
     try {
       const response = await fetch(`${Api}/delete/${modelName}/`, {
         method: "DELETE",
@@ -69,8 +69,10 @@ export const deleteModel = createAsyncThunk(
       // const data = await response.json();
 
       if (response.ok) {
-        return {modelName };
+        return {modelName};
       } else {
+        const data = await response.json()
+        console.log("data",data)
         return rejectWithValue("error");
       }
     } catch (error) {

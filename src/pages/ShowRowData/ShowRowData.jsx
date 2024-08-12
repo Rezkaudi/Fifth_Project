@@ -5,7 +5,27 @@ import { getAllModelDataSpecify } from '../../features/model/handleRequests';
 import { useParams, useNavigate } from 'react-router-dom';
 import PrimaryLoading from '../../component/PrimaryLoading/PrimaryLoading';
 
+
+import INTEGER from "../../assets/types/int.svg"
+import BLOB from "../../assets/types/image.svg"
+import REAL from "../../assets/types/real.svg"
+import FK from "../../assets/types/fk.svg"
+import TEXT from "../../assets/types/string.svg"
+
 const ShowRowData = () => {
+
+    const types = {
+        INTEGER: INTEGER,
+        BLOB: BLOB,
+        REAL: REAL,
+        FK: FK,
+        TEXT: TEXT
+    }
+
+    const getType = (type, isKey) => {
+        if (isKey) return types.FK
+        else return types[type]
+    }
 
     const { modelName, projectName, rowId } = useParams()
     const navigate = useNavigate()
@@ -56,8 +76,6 @@ const ShowRowData = () => {
         console.log("relatedModel", relatedModel,);
     }, [relatedModel])
 
-
-
     // const handleChange = (e) => {
     //     const { name, value, files } = e.target;
     //     const fileValue = files && files.length ? files[0] : value; // Use the first file if it's a file input className='h-10 bg-gray1 w-full block p-1 outline-none border border-c2 rounded', otherwise use the value
@@ -88,7 +106,7 @@ const ShowRowData = () => {
 
     return (
         <div className="addRowDataPage">
-            <div className='modalContainer'>
+            <div className='modalContainer pt-4'>
                 <div className="p-5">
                     <div className="contentContainer">
                         {/*header*/}
@@ -107,7 +125,10 @@ const ShowRowData = () => {
                             <ol className='grid grid-cols-1 md:grid-cols-2 gap-5 gap-y-10'>
                                 {rowData && modelFields ? modelFields.slice(1).map((item, index) =>
                                     <li className=' space-y-2' key={index}>
-                                        <label className='text-base font-bold text-[#777]' htmlFor={item.name}>{item.name} :{item.type}  </label>
+                                        <label className='flex gap-1 text-base font-bold text-[#777]' htmlFor={item.name}>
+                                            <img src={getType(item.type,item.is_key)} alt="" />
+                                            <span>{item.name} :</span>
+                                        </label>
                                         <p className='h-fit bg-gray1 w-full block p-1 outline-none border border-c2 rounded break-words'>{rowData[item.name] || ""}</p>
 
                                         {/* {item.type === "INTEGER" && !item.is_key && <input className='h-10 bg-gray1 w-full block p-1 outline-none border border-c2 rounded' name={item.name} id={item.name} type="number" min={0} value={rowData[item.name] || ""} required onChange={handleChange} />}

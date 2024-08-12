@@ -3,7 +3,7 @@
 }
 
 .modelHeader .left .modelName {
-    @apply text-c2 text-2xl font-black mr-4
+    @apply text-c2 text-base md:text-xl lg:text-2xl font-black mr-4 
 }
 
 .modelHeader .left button {
@@ -16,5 +16,5 @@
 
 
 .modelHeader .right button {
-    @apply py-2 px-10 bg-c1 text-c5 rounded
+    @apply py-2 px-2 lg:px-10 bg-c1 text-c5 rounded
 }

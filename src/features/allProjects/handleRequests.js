@@ -149,9 +149,10 @@ export const deleteProjectModel = createAsyncThunk(
       // const data = await response.json();
 
       if (response.ok) {
-        return {modelName };
+        return { modelName };
       } else {
-        return rejectWithValue("error");
+        const data = await response.json();
+        return rejectWithValue(data.Error);
       }
     } catch (error) {
       return rejectWithValue(error.message);

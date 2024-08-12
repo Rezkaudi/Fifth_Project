@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Pagination from "../Pagination/Pagination";
 import './Table.css'
 import DeleteDataModal from "../DeleteDataModal/DeleteDataModal";
@@ -18,12 +18,9 @@ const Table = ({ modelName, projectName }) => {
     const indexOfFirstItem = indexOfLastItem - 10;
     const currentItems = modelData?.slice(indexOfFirstItem, indexOfLastItem);
 
-    useEffect(() => {
-        console.log("modelData", modelData);
-        console.log("modelFields", modelFields);
-    }, [modelFields, modelData])
+
     return (
-        <div className="mainTable">
+        <div className="mainTable22">
             <div className="modelTableData">
                 <div className="tableContainer ">
                     {modelFields && modelData ?
@@ -40,7 +37,7 @@ const Table = ({ modelName, projectName }) => {
                                     )}
                                     {
                                         modelFields.length > 4 &&
-                                        <th scope="col" className="relative px-6 py-1">
+                                        <th scope="col" title={`+${modelFields.length - 4} More fields ...`} className="truncate relative px-6 py-1 max-w-40">
                                             <span className="text-xs font-extralight">+{modelFields.length - 4} More fields ...</span>
                                         </th>
                                     }
@@ -62,7 +59,7 @@ const Table = ({ modelName, projectName }) => {
                                                 <td key={index} className="cell max-w-48 truncate">
 
                                                     {modelFields[index].type === "BLOB" ?
-                                                        <img className="max-w-12" src={item[prob]} alt="img" />
+                                                        <img className="h-10 w-10 bg-contain" src={item[prob]} alt="img" />
                                                         :
                                                         <span>{item[prob]}</span>
                                                     }

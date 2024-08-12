@@ -1,0 +1,56 @@
+
+.CreateTokenModal .modalContainer .content {
+    @apply justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none animate-slide-from-top  pb-6
+}
+
+.CreateTokenModal .modalContainer .content .contentContainer {
+    @apply mx-5 w-full lg:w-1/2 my-1 border-0 rounded-lg shadow-lg relative flex flex-col bg-[#E2E8E4] outline-none focus:outline-none 
+}
+
+
+.CreateTokenModal .contentContainer .modelHeader {
+    border: none !important;
+    /* padding-top: px !important   ; */
+    @apply flex items-center justify-between rounded-t 
+}
+
+.CreateTokenModal .contentContainer .modelHeader h3 {
+    @apply text-xl font-semibold text-[#737373]
+}
+
+.CreateTokenModal .contentContainer .modelBody {
+    @apply relative p-6 flex-auto text-c3
+}
+
+.CreateTokenModal .contentContainer .modelBody ol {
+    @apply list-none mx-2
+}
+
+.CreateTokenModal .contentContainer .modelBody .types label {
+    @apply  border border-c2 m-0 rounded h-12
+}
+
+.CreateTokenModal .contentContainer .modelBody ol li label {
+    @apply mx-2
+}
+
+.CreateTokenModal .contentContainer .modelBody ol li input {
+    @apply border border-c2 w-32 rounded
+}
+
+
+
+
+.CreateTokenModal .contentContainer .modelFooter1 {
+    border:  none !important;
+    @apply flex items-center justify-end rounded-b p-0
+}
+
+.CreateTokenModal .contentContainer .close5 {
+    background-color: white !important;
+    @apply text-[#777] bg-transparent font-bold px-6 py-3 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150
+}
+
+.CreateTokenModal .contentContainer .save5{
+    @apply flex items-center justify-center bg-c2 text-white active:bg-c2 font-bold text-xs px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150
+}

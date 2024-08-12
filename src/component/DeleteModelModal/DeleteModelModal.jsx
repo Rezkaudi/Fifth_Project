@@ -1,14 +1,11 @@
 import './DeleteModelModal.css'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 import Delete from '../../assets/images/icon _trash-c2.svg'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteProjectModel } from '../../features/allProjects/handleRequests'
 
-const DeleteModelModal = ({ modelName, projectName }) => {
-
-    const navigate = useNavigate()
+const DeleteModelModal = ({ modelName}) => {
 
     const [showModal, setShowModal] = useState(false);
     const { loading } = useSelector((state) => state.allProjects);
@@ -22,12 +19,12 @@ const DeleteModelModal = ({ modelName, projectName }) => {
 
     const handleDelete = (e) => {
         e?.stopPropagation()
-        console.log("delete", modelName);
+        // console.log("delete", modelName);
 
         dispatch(deleteProjectModel(modelName)).unwrap().then(
             () => {
                 // dispatch(getAllUserModels(modelName))
-                navigate(`/account/${projectName}`)
+                // navigate(`/account/${projectName}`)
                 handelShowModal()
             },
             (error) => {
@@ -47,7 +44,7 @@ const DeleteModelModal = ({ modelName, projectName }) => {
                     <div className="content">
                         <div className="contentContainer">
                             {/*header*/}
-                            <div className="modelHeader1">
+                            <div className="modelHeader1 text-center">
                                 <img src={Delete} alt="delete" />
                                 <h3>Delete {modelName} Model </h3>
                                 <p>Are you sure you would like to do this ? </p>

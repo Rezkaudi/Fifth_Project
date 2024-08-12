@@ -35,7 +35,7 @@ export const modelSlice = createSlice({
         // toast.success("successfull getAllModelData");
       })
       .addCase(getAllModelData.rejected, (state, { payload }) => {
-        toast.error("error");
+        toast.error(payload);
       });
 
     // getModelFields
@@ -48,7 +48,7 @@ export const modelSlice = createSlice({
         // toast.success("successfull getModelFields");
       })
       .addCase(getModelFields.rejected, (state, { payload }) => {
-        toast.error("error");
+        toast.error(payload);
       });
 
     // deleteModelRow

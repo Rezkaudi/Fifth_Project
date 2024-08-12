@@ -2,7 +2,6 @@ import { Outlet } from 'react-router-dom'
 import './Project.css'
 import ProjectSidebar from '../../component/ProjectSidebar/ProjectSidebar'
 import { useLocation, useParams } from 'react-router-dom'
-import { useEffect } from 'react'
 import NewModelModal from "../../component/NewModelModal/NewModelModal"
 import ModelsTable from '../../component/ModelsTable/ModelsTable'
 
@@ -10,16 +9,12 @@ const Project = () => {
     const location = useLocation()
     const { projectName } = useParams()
 
-    useEffect(() => {
-        console.log(location.pathname);
-    }, [location])
-
     return (
         <div className='projectDash'>
             <ProjectSidebar />
             <div className="default">
                 {location.pathname === `/account/${projectName}` ?
-                    <div className='px-5'>
+                    <div className='px-2 lg:px-5 pt-4'>
                         <header className='modelHeader  mb-10'>
                             <div className="left">
                                 <span className="modelName">{"All Models"}</span>

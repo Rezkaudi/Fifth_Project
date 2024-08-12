@@ -5,6 +5,7 @@ import {
   getUserData,
   creatUserToken,
   getUserTokens,
+  refreshToken,
 } from "./handleRequests";
 import { toast } from "react-toastify";
 
@@ -43,9 +44,9 @@ export const userSlice = createSlice({
       .addCase(signUp.rejected, (state, { payload }) => {
         state.loading = false;
         // toast.error("error");
-        payload.forEach(message => {
+        payload.forEach((message) => {
           toast.error(message);
-      });
+        });
       });
 
     //signIn
@@ -90,11 +91,39 @@ export const userSlice = createSlice({
 
     // getUserTokens
     builder
+      .addCase(getUserTokens.pending, (state, { payload }) => {
+        state.userTokens = null;
+      })
       .addCase(getUserTokens.fulfilled, (state, { payload }) => {
         state.userTokens = payload;
+        console.log(payload);
         // toast.success("successfull getUserTokens");
       })
       .addCase(getUserTokens.rejected, (state, { payload }) => {
+        toast.error("error");
+      });
+
+    builder
+      .addCase(refreshToken.pending, (state, { payload }) => {
+        state.loading = true;
+      })
+      .addCase(refreshToken.fulfilled, (state, { payload }) => {
+        state.loading = false;
+
+        state.userTokens = state.userTokens.map((item) => {
+          if (item.token === payload.tokenId) {
+            return {
+              ...item,
+              token: payload.data.new_token,
+            };
+          }
+          return item;
+        });
+
+        toast.success("successfull refreshToken");
+      })
+      .addCase(refreshToken.rejected, (state, { payload }) => {
+        state.loading = false;
         toast.error("error");
       });
   },

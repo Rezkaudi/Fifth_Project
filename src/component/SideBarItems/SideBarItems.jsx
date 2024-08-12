@@ -36,7 +36,7 @@ const SideBarItem = ({ to, itemName, icon }) => {
     return (
         <li className={activeItem ? "active" : ""}>
             <i><img src={icon} alt={itemName} /></i>
-            <Link onClick={handleActiveItem} to={to}>{itemName}</Link>
+            <Link className='' onClick={handleActiveItem} to={to}>{itemName}</Link>
         </li>
     )
 }
