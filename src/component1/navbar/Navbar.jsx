@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Buttons1 from "../Buttons/Buttons1";
 import { Link as SLink } from "react-scroll";
 import Logo from "../../assets/images/logo.png"
 
