@@ -59,13 +59,8 @@ const Navbar = () => {
               </ul>
             </div>
             <div className="inline-block my-5 sm:my-0">
-              <p className="inline-block mr-10 text-item">
-                {" "}
+              <p className="flex px-7 py-1.5 rounded text-sm font-semibold leading-6 text-white shadow-sm gradiantBg">
                 <Link to="/signin">Log in</Link>
-              </p>
-              <p className="inline-block">
-                {" "}
-                <Buttons1 name="get started" />
               </p>
             </div>
           </div>

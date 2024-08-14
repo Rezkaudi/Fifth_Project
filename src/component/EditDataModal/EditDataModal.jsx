@@ -73,9 +73,6 @@ const EditDataModal = ({ rowId, modelName, currentRowData, modelFields }) => {
         //     console.log(`${key}: ${value}`);
         // }
 
-        // for (let [key, value] of formData.entries()) {
-        //     console.log(`${key}: ${value}`);
-        // }
 
         dispatch(updateModelRow({ modelName, rowId, rowData: formData })).unwrap().then(
             () => {

@@ -1,11 +1,37 @@
 // FieldsTable.jsx corrected version
 import { useState, useEffect } from "react";
 import trush from "../../assets/images/icon _trash-c2.svg"; // Assuming this is your delete icon
-import text from "../../assets/images/string.svg"
+
 import './FieldsTable.css';
 
+
+import INTEGER from "../../assets/types/int.svg"
+import BLOB from "../../assets/types/image.svg"
+import REAL from "../../assets/types/real.svg"
+import FK from "../../assets/types/fk.svg"
+import TEXT from "../../assets/types/string.svg"
+
+
+
+
 const FieldsTable = ({ fields, onDelete }) => {
+
     const [coulmn, setCoulmn] = useState(null);
+
+    const types = {
+        INTEGER: INTEGER,
+        BLOB: BLOB,
+        REAL: REAL,
+        FK: FK,
+        TEXT: TEXT
+    }
+
+    const getType = (type, isKey) => {
+        if (isKey) return types.FK
+        else return types[type]
+    }
+
+
 
     useEffect(() => {
         setCoulmn(fields);
@@ -33,7 +59,7 @@ const FieldsTable = ({ fields, onDelete }) => {
                                 <tr key={index}>
                                     <td className="index">{index + 1}</td>
                                     <td className="cell">
-                                        <img className="w-8 inline-block mr-3" src={text} alt="text" />
+                                        <img className="w-8 inline-block mr-3" src={getType(item.datatype,item.related_model!=="")} alt="text" />
                                         {item.field}
                                     </td>
                                     {/* <td className="cell">{item.datatype}</td> */}

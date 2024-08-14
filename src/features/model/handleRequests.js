@@ -71,7 +71,9 @@ export const deleteModelRow = createAsyncThunk(
       if (response.ok) {
         return { rowId };
       } else {
-        return rejectWithValue("error");
+        const data = await response.json();
+        console.log(data)
+        return rejectWithValue(data.Error);
       }
     } catch (error) {
       return rejectWithValue(error.message);

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import Button from '../../component1/Buttons/Button'
@@ -14,7 +14,13 @@ function SignIn() {
     const [validation, setvalid] = useState(false)
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const userToken = localStorage.getItem("userToken");
 
+    useEffect(() => {
+        if (!!userToken) {
+            navigate("/account")
+        }
+    }, [navigate,userToken])
 
     const handelLogin = async (e) => {
         e.preventDefault()

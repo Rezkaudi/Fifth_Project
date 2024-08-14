@@ -1,5 +1,5 @@
 import './FieldsModal.css'
-import { useState ,useEffect} from 'react'
+import { useState, useEffect } from 'react'
 
 import AddFieldModal from '../AddFieldModal/AddFieldModal'
 import FieldsTable from '../FieldsTable/FieldsTable'
@@ -67,6 +67,7 @@ const FieldsModal = ({ hidden, modelName, projectName }) => {
         return object;
     }
 
+
     const handleSubmit = async (e) => {
         e.preventDefault()
 
@@ -123,7 +124,7 @@ const FieldsModal = ({ hidden, modelName, projectName }) => {
                             {/*body*/}
                             <div className="modelBody">
                                 <label className='block mb-2' htmlFor="modelName">Model Name :</label>
-                                <input className='rounded h-8 px-1 outline-none bg-gray-300'  name="modelName" id="modelName" type="text" defaultValue={modelName}  readOnly/>
+                                <input className='rounded h-8 px-1 outline-none bg-gray-300' name="modelName" id="modelName" type="text" defaultValue={modelName} readOnly />
 
                                 <FieldsTable fields={fields} onDelete={handleDeleteField} />
                             </div>
@@ -131,17 +132,17 @@ const FieldsModal = ({ hidden, modelName, projectName }) => {
                             <div className="modelFooter3 rounded flex items-center justify-between p-2 lg:p-6 bg-[#ccc] flex-wrap-reverse">
                                 <button className="close" onClick={() => setShowModal(false)} disabled={loading}>Back</button>
                                 <div className='flex items-center justify-center gap-2'>
-                                <AddFieldModal fields={fields} setFields={setFields} userProjectModels={userProjectModels} />
-                                <button type='submit' className="save" disabled={loading}>
-                                    Save Changes
-                                    {loading && (
-                                        <span
-                                            className="animate-spin h-5 ml-2 w-5 border-t-2 border-b-2 border-c4 rounded-full inline-block"
-                                            role="status"
-                                            aria-live="polite"
-                                        ></span>
-                                    )}
-                                </button>
+                                    <AddFieldModal fields={fields} setFields={setFields} userProjectModels={userProjectModels} />
+                                    <button type='submit' className="save" disabled={loading}>
+                                        Save Changes
+                                        {loading && (
+                                            <span
+                                                className="animate-spin h-5 ml-2 w-5 border-t-2 border-b-2 border-c4 rounded-full inline-block"
+                                                role="status"
+                                                aria-live="polite"
+                                            ></span>
+                                        )}
+                                    </button>
                                 </div>
                             </div>
                         </form>

@@ -8,13 +8,18 @@ const NewModelModal = ({ projectName }) => {
     const [showModal, setShowModal] = useState(false);
     const [modelName, setModelName] = useState("");
 
+    function replaceSpacesWithUnderscores(str) {
+        return str.trim().replace(/\s+/g, '_');
+    }
 
     const handelShowModal = () => {
         setShowModal(pre => !pre)
+        // setModelName(pre => replaceSpacesWithUnderscores(pre))
     }
 
     const handleChange = (e) => {
-        setModelName(e.target.value)
+        setModelName(replaceSpacesWithUnderscores(e.target.value))
+        // setModelName(e.target.value)
     }
 
     return (
@@ -31,18 +36,18 @@ const NewModelModal = ({ projectName }) => {
                                 <div className="modelHeader">
                                     <h3>Create new Model</h3>
                                 </div>
-                                <hr className='bg-slate-500 h-[2px] mx-5'/>
+                                <hr className='bg-slate-500 h-[2px] mx-5' />
                                 {/*body*/}
                                 <div className="modelBody">
                                     <ol>
                                         <li>
                                             <label className='block mb-2' htmlFor="project">Project Name :</label>
-                                            <input className='rounded h-8 ml-5 px-1 mb-5 bg-gray-300'  disabled name="project" id="project" type="text" value={projectName} required />
+                                            <input className='rounded h-8 ml-5 px-1 mb-5 bg-gray-300' disabled name="project" id="project" type="text" value={projectName} required />
                                         </li>
 
                                         <li>
                                             <label className='block mb-2' htmlFor="modelName">Enter Model Name :</label>
-                                            <input className='rounded h-8 ml-5 px-1 outline-none'  name="modelName" id="modelName" type="text" value={modelName} required onChange={handleChange} />
+                                            <input className='rounded h-8 ml-5 px-1 outline-none' name="modelName" id="modelName" type="text" value={modelName} required onChange={handleChange} />
                                         </li>
 
                                     </ol>

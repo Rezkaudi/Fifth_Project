@@ -48,7 +48,7 @@ const Sidbar = () => {
         <>
             <aside className={activeSideBare ? "sidebar active" : "sidebar unActive"}>
                 <div className="logo">
-                    <Link to="/account">
+                    <Link to="/">
                         <img className='w-20' src={Logo} alt="logo" />
                     </Link>
                 </div>

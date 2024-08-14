@@ -11,7 +11,7 @@ const NewProjectModal = () => {
     const { loading } = useSelector((state) => state.allProjects);
 
     function replaceSpacesWithUnderscores(str) {
-        return str.replace(/\s+/g, '_');
+        return str.trim().replace(/\s+/g, '_');
     }
 
     const handelShowModal = () => {
@@ -27,6 +27,8 @@ const NewProjectModal = () => {
         const formData = new FormData()
         formData.append("name", replaceSpacesWithUnderscores(name))
         console.log(formData);
+        console.log(replaceSpacesWithUnderscores(name));
+
 
         dispatch(creatProject(formData)).unwrap().then(
             () => {
