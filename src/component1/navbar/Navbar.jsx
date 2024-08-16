@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Link as SLink } from "react-scroll";
+// import { Link as SLink } from "react-scroll";
 import Logo from "../../assets/images/logo.png"
 
 const Navbar = () => {
@@ -12,8 +12,8 @@ const Navbar = () => {
   const routes = [
     { id: "01", isRoute: true, name: "Home", path: "/" },
     { id: "02", isRoute: true, name: "Documentation", path: "/doc" },
-    { id: "03", isRoute: false, name: "Service", path: "service" },
-    { id: "04", isRoute: false, name: "Contact", path: "contact" },
+    { id: "03", isRoute: false, name: "Service", path: "/#service" },
+    { id: "04", isRoute: false, name: "Contact", path: "/#contact" },
   ];
 
   return (
@@ -51,7 +51,7 @@ const Navbar = () => {
                     {route.isRoute ? (
                       <Link to={route.path}>{route.name}</Link>
                     ) : (
-                      <SLink to={route.path}>{route.name}</SLink>
+                      <a href={route.path}>{route.name}</a>
                     )}
                   </li>
                 ))}

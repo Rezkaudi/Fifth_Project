@@ -227,7 +227,7 @@ const AddFieldModal = ({ fields, setFields, userProjectModels }) => {
                                                             <img src={bool} alt="text" />
                                                         </span>
                                                         <span className="flex-1">
-                                                            <h5 className="text-xs">null</h5>
+                                                            <h5 className="text-xs">is null</h5>
                                                             <p className="text-[7px]">If feild maybe null or no</p>
                                                         </span>
                                                         <span className="inline-flex items-center cursor-pointer">

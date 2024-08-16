@@ -66,7 +66,7 @@ function Home() {
           content.map(cont => <Card key={cont.id} name={cont.name} content={cont.con} />)
         }
       </ContainerB>
-      <div className='grid grid-cols-1 md:grid-cols-2 gap-5 px-10 py-32 ' name='service' >
+      <div className='grid grid-cols-1 md:grid-cols-2 gap-5 px-10 py-32 ' name='service' id='service' >
         <div className='justify-center flex'>
           <div className='text-left'>
             <p className='text-4xl text-blue1 font-bold text-center  md:text-left gradiantText'>Documentation</p>
@@ -83,7 +83,7 @@ function Home() {
           </div>
         </div>
       </div>
-      <div name="contact">
+      <div name="contact" id='contact'>
         <ContactForm />
       </div>
 

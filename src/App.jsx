@@ -22,6 +22,7 @@ import ProtectedRoute from './component/ProtectedRoute/ProtectedRoute'
 import Tokens from "./pages/Tokens/Tokens"
 import LogOut from "./pages/LogOut/LogOut"
 import AddRowData from './pages/AddRowData/AddRowData';
+import Documentation from './pages/Documentation/Documentation';
 import 'aos/dist/aos.css';
 import AOS from 'aos';
 
@@ -52,6 +53,7 @@ const App = () => {
       <Router>
         <Routes>
           <Route index element={<Home />} />
+          <Route path='doc' element={<Documentation />} />
           <Route path='signin' element={<SignIn />} />
           <Route path='signup' element={<SignUp />} />
           <Route path='logOut' element={<LogOut />} />

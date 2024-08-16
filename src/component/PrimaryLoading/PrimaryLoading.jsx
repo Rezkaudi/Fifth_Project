@@ -11,7 +11,7 @@ const PrimaryLoading = () => {
         <img className='absolute top-1/3 -ml-3 w-20 h-20 animate-spin' src={LoadingIcon} alt="" />
         <img src={LoadingImage} alt="" />
       </div>
-      <div className="opacity-50 fixed inset-0 z-30 bg-black"></div>
+      <div className="opacity-30 fixed inset-0 z-30 bg-black"></div>
     </div>
   )
 }

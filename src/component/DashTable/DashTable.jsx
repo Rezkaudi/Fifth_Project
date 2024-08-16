@@ -43,7 +43,7 @@ const DashTable = () => {
                                 </th>
                                 <th scope="col" className="col">field name</th>
                                 <th scope="col" className="col">data type</th>
-                                <th scope="col" className="col">not null</th>
+                                <th scope="col" className="col">is null</th>
                                 <th scope="col" className="col">is unique</th>
                                 <th scope="col" className="col">is_key</th>
                                 <th scope="col" className="col"> related_model</th>
@@ -51,7 +51,7 @@ const DashTable = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {modelFields.map((item, index) => (
+                            {modelFields.slice(1).map((item, index) => (
                                 <tr key={index}>
                                     <td className="index">{index + 1}</td>
                                     <td className="cell">{item["name"]?.toString()}</td>
@@ -59,7 +59,7 @@ const DashTable = () => {
                                         <img src={getType(item["type"], item["is_key"])} alt={item["type"]?.toString()} />
                                     </td>
                                     <td className="cell">
-                                        {item["notnull"] ?
+                                        {!item["notnull"] ?
                                             <span className='text-green-500'>&#10004;</span> :
                                             <span className='text-red-500'>&#10006;</span>
                                         }
